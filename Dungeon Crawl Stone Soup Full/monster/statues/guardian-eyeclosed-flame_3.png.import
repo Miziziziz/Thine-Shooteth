@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/guardian-eyeclosed-flame_3.png-86cbb7a52f5c98c7aa692091ad83f599.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Dungeon Crawl Stone Soup Full/monster/statues/guardian-eyeclosed-flame_3.png"
+dest_files=[ "res://.import/guardian-eyeclosed-flame_3.png-86cbb7a52f5c98c7aa692091ad83f599.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/demonic_horde.png-5cee805b00d7f026caa3d2486778c645.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://crawl-tiles Oct-5-2010/spells/summoning/demonic_horde.png"
+dest_files=[ "res://.import/demonic_horde.png-5cee805b00d7f026caa3d2486778c645.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://materials/Catacombs.tres" type="Material" id=1]
+[ext_resource path="res://meshes/plane.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://materials/CobaltFloor.tres" type="Material" id=3]
+[ext_resource path="res://meshes/cube.obj" type="ArrayMesh" id=4]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="BoxShape" id=2]
+
+[node name="MeshBlockSet" type="Spatial"]
+
+[node name="GreyBrickWall" type="MeshInstance" parent="."]
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="GreyBrickWall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="GreyBrickWall/StaticBody"]
+shape = SubResource( 1 )
+
+[node name="CobaltFloor" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="CobaltFloor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="CobaltFloor/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 2 )

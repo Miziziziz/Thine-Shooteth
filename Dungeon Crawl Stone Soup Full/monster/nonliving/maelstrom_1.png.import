@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/maelstrom_1.png-a516642fc2aa91cfc72047c0d86e61ba.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Dungeon Crawl Stone Soup Full/monster/nonliving/maelstrom_1.png"
+dest_files=[ "res://.import/maelstrom_1.png-a516642fc2aa91cfc72047c0d86e61ba.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

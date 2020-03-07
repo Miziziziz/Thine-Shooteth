@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/black_cobalt_1.png-6bc272e20f7d48e90cb5ed978906191a.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Dungeon Crawl Stone Soup Full/dungeon/floor/black_cobalt_1.png"
+dest_files=[ "res://.import/black_cobalt_1.png-6bc272e20f7d48e90cb5ed978906191a.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

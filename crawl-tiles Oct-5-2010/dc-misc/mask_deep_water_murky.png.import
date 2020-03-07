@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/mask_deep_water_murky.png-0b9242fb09a2993bcc49b2507e442800.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://crawl-tiles Oct-5-2010/dc-misc/mask_deep_water_murky.png"
+dest_files=[ "res://.import/mask_deep_water_murky.png-0b9242fb09a2993bcc49b2507e442800.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

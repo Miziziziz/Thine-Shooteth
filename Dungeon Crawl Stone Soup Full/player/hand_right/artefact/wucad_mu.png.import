@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/wucad_mu.png-8e896ac8aa2ed43e2c3942e337d4ad31.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Dungeon Crawl Stone Soup Full/player/hand_right/artefact/wucad_mu.png"
+dest_files=[ "res://.import/wucad_mu.png-8e896ac8aa2ed43e2c3942e337d4ad31.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

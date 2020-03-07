@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/spear_2_new.png-d9447aafa1da9db15bc764e95b3e2210.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Dungeon Crawl Stone Soup Full/player/hand_right/spear_2_new.png"
+dest_files=[ "res://.import/spear_2_new.png-d9447aafa1da9db15bc764e95b3e2210.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
