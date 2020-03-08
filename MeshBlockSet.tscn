@@ -1,32 +1,147 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://materials/Catacombs.tres" type="Material" id=1]
 [ext_resource path="res://meshes/plane.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://materials/CobaltFloor.tres" type="Material" id=3]
+[ext_resource path="res://materials/Cobble.tres" type="Material" id=3]
 [ext_resource path="res://meshes/cube.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://materials/Brick.tres" type="Material" id=5]
+[ext_resource path="res://materials/Lair.tres" type="Material" id=6]
+[ext_resource path="res://materials/Flesh.tres" type="Material" id=7]
+[ext_resource path="res://materials/Undead.tres" type="Material" id=8]
+[ext_resource path="res://materials/Volcanic.tres" type="Material" id=9]
+[ext_resource path="res://materials/Dirt.tres" type="Material" id=10]
+[ext_resource path="res://materials/Lava.tres" type="Material" id=11]
+[ext_resource path="res://materials/Limestone.tres" type="Material" id=12]
+[ext_resource path="res://materials/Swamp.tres" type="Material" id=13]
+[ext_resource path="res://materials/WhiteMarble.tres" type="Material" id=14]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape" id=13]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=17]
 
 [node name="MeshBlockSet" type="Spatial"]
 
-[node name="GreyBrickWall" type="MeshInstance" parent="."]
+[node name="BrickWall" type="MeshInstance" parent="."]
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="BrickWall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="BrickWall/StaticBody"]
+shape = SubResource( 13 )
+
+[node name="Br_SwampFloor" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 13 )
+
+[node name="StaticBody" type="StaticBody" parent="Br_SwampFloor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Br_SwampFloor/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 17 )
+
+[node name="CatacombsWall" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 mesh = ExtResource( 4 )
 material/0 = ExtResource( 1 )
 
-[node name="StaticBody" type="StaticBody" parent="GreyBrickWall"]
+[node name="StaticBody" type="StaticBody" parent="CatacombsWall"]
 
-[node name="CollisionShape" type="CollisionShape" parent="GreyBrickWall/StaticBody"]
-shape = SubResource( 1 )
+[node name="CollisionShape" type="CollisionShape" parent="CatacombsWall/StaticBody"]
+shape = SubResource( 13 )
 
-[node name="CobaltFloor" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+[node name="Ca_CobbleFloor" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
 mesh = ExtResource( 2 )
 material/0 = ExtResource( 3 )
 
-[node name="StaticBody" type="StaticBody" parent="CobaltFloor"]
+[node name="StaticBody" type="StaticBody" parent="Ca_CobbleFloor"]
 
-[node name="CollisionShape" type="CollisionShape" parent="CobaltFloor/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Ca_CobbleFloor/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 17 )
+
+[node name="LairWall" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 6 )
+
+[node name="StaticBody" type="StaticBody" parent="LairWall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="LairWall/StaticBody"]
+shape = SubResource( 13 )
+
+[node name="La_LimestoneFloor" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 12 )
+
+[node name="StaticBody" type="StaticBody" parent="La_LimestoneFloor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="La_LimestoneFloor/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 17 )
+
+[node name="FleshWall" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 7 )
+
+[node name="StaticBody" type="StaticBody" parent="FleshWall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="FleshWall/StaticBody"]
+shape = SubResource( 13 )
+
+[node name="Fl_MarbleFloor" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 14 )
+
+[node name="StaticBody" type="StaticBody" parent="Fl_MarbleFloor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Fl_MarbleFloor/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 17 )
+
+[node name="UndeadWall" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 8 )
+
+[node name="StaticBody" type="StaticBody" parent="UndeadWall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="UndeadWall/StaticBody"]
+shape = SubResource( 13 )
+
+[node name="Un_DirtFloor" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 10 )
+
+[node name="StaticBody" type="StaticBody" parent="Un_DirtFloor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Un_DirtFloor/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 17 )
+
+[node name="VolcanicWall" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 9 )
+
+[node name="StaticBody" type="StaticBody" parent="VolcanicWall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="VolcanicWall/StaticBody"]
+shape = SubResource( 13 )
+
+[node name="Vo_LavaFloor" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 11 )
+
+[node name="StaticBody" type="StaticBody" parent="Vo_LavaFloor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Vo_LavaFloor/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 17 )

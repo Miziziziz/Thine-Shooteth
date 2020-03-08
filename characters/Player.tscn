@@ -1,0 +1,777 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://characters/Player.gd" type="Script" id=1]
+[ext_resource path="res://characters/WeaponsManager.gd" type="Script" id=2]
+[ext_resource path="res://sprites/weapons/morningstar1_noshadow.png" type="Texture" id=3]
+[ext_resource path="res://sprites/weapons/crossbow2_noshadow.png" type="Texture" id=4]
+[ext_resource path="res://sprites/weapons/spwpn_sceptre_of_torment_noshadow.png" type="Texture" id=5]
+[ext_resource path="res://sprites/weapons/wands/gem_iron_noshadow.png" type="Texture" id=6]
+[ext_resource path="res://sprites/weapons/wands/gem_copper_noshadow.png" type="Texture" id=7]
+[ext_resource path="res://sprites/weapons/wands/gem_silver_noshadow.png" type="Texture" id=8]
+[ext_resource path="res://sprites/weapons/wands/gem_bone_noshadow.png" type="Texture" id=9]
+[ext_resource path="res://sprites/weapons/wands/gem_gold_noshadow.png" type="Texture" id=10]
+[ext_resource path="res://sprites/weapons/wands/gem_lead_noshadow.png" type="Texture" id=11]
+[ext_resource path="res://sprites/weapons/wands/gem_plastic_noshadow.png" type="Texture" id=12]
+[ext_resource path="res://weapons/Crossbow.gd" type="Script" id=13]
+[ext_resource path="res://sprites/weapons/wands/gem_brass_noshadow.png" type="Texture" id=14]
+[ext_resource path="res://sprites/weapons/wands/gem_ivory_noshadow.png" type="Texture" id=15]
+[ext_resource path="res://sprites/weapons/wands/gem_bronze_noshadow.png" type="Texture" id=16]
+[ext_resource path="res://sprites/weapons/wands/gem_wood_noshadow.png" type="Texture" id=17]
+[ext_resource path="res://sprites/projectiles/arrow7.png" type="Texture" id=18]
+[ext_resource path="res://sprites/weapons/hand4.png" type="Texture" id=19]
+[ext_resource path="res://sprites/weapons/cloud_grey_smoke.png" type="Texture" id=20]
+[ext_resource path="res://weapons/Mace.gd" type="Script" id=21]
+
+[sub_resource type="Animation" id=1]
+resource_name = "attack"
+length = 0.6
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("MaceGraphic:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 57.92, -30.8528, -8.71011 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MaceGraphic:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -37.7214, -700.171 ), Vector2( -857.94, -101.411 ), Vector2( -749.928, -408.291 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "idle", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MaceGraphic:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -687.745, -474.611 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MaceGraphic:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CrossbowGraphic:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CrossbowGraphic:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -705.266, -440.578 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CrossbowGraphic:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hand:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Smoke:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CrossbowGraphic/Bolts2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CrossbowGraphic/Bolts:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.75
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("CrossbowGraphic:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CrossbowGraphic:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -705.266, -440.578 ), Vector2( -673.532, -392.143 ), Vector2( -521.371, -209.428 ), Vector2( -521.371, -160.741 ), Vector2( -521.371, -256.683 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CrossbowGraphic:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.0, -52.7378 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Smoke:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CrossbowGraphic/Bolts:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hand:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hand:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3, 0.45, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -883.132, -563.414 ), Vector2( -142.802, -455.953 ), Vector2( -611.058, -463.113 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hand:rect_rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.3, 0.45, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 27.462, 71.0654, 49.664 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hand/Bolts:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CrossbowGraphic/Bolts2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "method"
+tracks/10/path = NodePath("AnimationPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.75 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "idle", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapons:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapons:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 22, 44 ) ]
+}
+
+[sub_resource type="CapsuleShape" id=7]
+radius = 0.5
+height = 0.5
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="." groups=[
+"main_camera",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="WeaponsManager" type="Spatial" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.615194 )
+script = ExtResource( 2 )
+
+[node name="Weapons" type="Control" parent="Camera/WeaponsManager"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mace" type="Control" parent="Camera/WeaponsManager/Weapons"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 21 )
+
+[node name="MaceGraphic" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Mace"]
+margin_left = -749.928
+margin_top = -408.291
+margin_right = -149.928
+margin_bottom = 191.709
+rect_rotation = -8.71011
+texture = ExtResource( 3 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager/Weapons/Mace"]
+autoplay = "idle"
+anims/attack = SubResource( 1 )
+anims/idle = SubResource( 2 )
+
+[node name="Crossbow" type="Control" parent="Camera/WeaponsManager/Weapons"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Smoke" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow"]
+visible = false
+margin_left = -754.439
+margin_top = -657.525
+margin_right = -154.438
+margin_bottom = -57.5253
+texture = ExtResource( 20 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CrossbowGraphic" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow"]
+margin_left = -705.266
+margin_top = -440.578
+margin_right = -105.266
+margin_bottom = 159.422
+texture = ExtResource( 4 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolts" type="Control" parent="Camera/WeaponsManager/Weapons/Crossbow/CrossbowGraphic"]
+margin_left = 255.0
+margin_top = 213.206
+margin_right = 295.0
+margin_bottom = 253.206
+rect_rotation = -4.8385
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolt" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow/CrossbowGraphic/Bolts"]
+margin_left = 64.9684
+margin_top = 369.748
+margin_right = 664.969
+margin_bottom = 969.748
+rect_rotation = -106.689
+texture = ExtResource( 18 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolt2" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow/CrossbowGraphic/Bolts"]
+margin_left = 12.9734
+margin_top = 384.067
+margin_right = 612.974
+margin_bottom = 984.067
+rect_rotation = -106.689
+texture = ExtResource( 18 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolt3" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow/CrossbowGraphic/Bolts"]
+margin_left = -39.1811
+margin_top = 399.895
+margin_right = 560.819
+margin_bottom = 999.895
+rect_rotation = -106.689
+texture = ExtResource( 18 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolts2" type="Control" parent="Camera/WeaponsManager/Weapons/Crossbow/CrossbowGraphic"]
+visible = false
+margin_left = 255.0
+margin_top = 213.206
+margin_right = 295.0
+margin_bottom = 253.206
+rect_rotation = -4.8385
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolt" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow/CrossbowGraphic/Bolts2"]
+margin_left = 320.14
+margin_top = -211.357
+margin_right = 920.14
+margin_bottom = 388.643
+rect_rotation = -255.199
+texture = ExtResource( 18 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolt2" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow/CrossbowGraphic/Bolts2"]
+margin_left = 268.145
+margin_top = -197.038
+margin_right = 868.145
+margin_bottom = 402.962
+rect_rotation = -255.199
+texture = ExtResource( 18 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolt3" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow/CrossbowGraphic/Bolts2"]
+margin_left = 215.99
+margin_top = -181.209
+margin_right = 815.99
+margin_bottom = 418.791
+rect_rotation = -255.199
+texture = ExtResource( 18 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hand" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow"]
+visible = false
+margin_left = -611.058
+margin_top = -463.113
+margin_right = -11.0573
+margin_bottom = 136.887
+rect_rotation = 49.664
+texture = ExtResource( 19 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolts" type="Control" parent="Camera/WeaponsManager/Weapons/Crossbow/Hand"]
+visible = false
+margin_left = 147.254
+margin_top = 386.856
+margin_right = 187.254
+margin_bottom = 426.856
+rect_rotation = -57.0472
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolt" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow/Hand/Bolts"]
+margin_left = 64.9684
+margin_top = 369.748
+margin_right = 664.969
+margin_bottom = 969.748
+rect_rotation = -106.689
+texture = ExtResource( 18 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolt2" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow/Hand/Bolts"]
+margin_left = 12.9734
+margin_top = 384.067
+margin_right = 612.974
+margin_bottom = 984.067
+rect_rotation = -106.689
+texture = ExtResource( 18 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bolt3" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow/Hand/Bolts"]
+margin_left = -39.1811
+margin_top = 399.895
+margin_right = 560.819
+margin_bottom = 999.895
+rect_rotation = -106.689
+texture = ExtResource( 18 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager/Weapons/Crossbow"]
+autoplay = "idle"
+anims/idle = SubResource( 3 )
+anims/shoot = SubResource( 4 )
+
+[node name="FireballStaff" type="Control" parent="Camera/WeaponsManager/Weapons"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaffGraphic" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff"]
+margin_left = -615.068
+margin_top = -427.685
+margin_right = -15.0679
+margin_bottom = 172.315
+texture = ExtResource( 5 )
+stretch_mode = 1
+flip_h = true
+
+[node name="MagicMissile" type="Control" parent="Camera/WeaponsManager/Weapons"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect5" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+margin_left = -523.859
+margin_top = -525.459
+margin_right = 76.1409
+margin_bottom = 74.5406
+rect_rotation = 11.99
+texture = ExtResource( 15 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect6" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+margin_left = -630.354
+margin_top = -408.134
+margin_right = -30.354
+margin_bottom = 191.866
+rect_rotation = -7.82178
+texture = ExtResource( 6 )
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+margin_left = -541.909
+margin_top = -427.989
+margin_right = 58.0908
+margin_bottom = 172.011
+rect_rotation = 1.81467
+texture = ExtResource( 17 )
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect3" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+margin_left = -412.852
+margin_top = -504.702
+margin_right = 187.148
+margin_bottom = 95.2982
+rect_rotation = 22.9774
+texture = ExtResource( 12 )
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+margin_left = -430.902
+margin_top = -388.279
+margin_right = 169.098
+margin_bottom = 211.721
+rect_rotation = 8.02425
+texture = ExtResource( 8 )
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect10" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+margin_left = -353.286
+margin_top = -506.507
+margin_right = 246.714
+margin_bottom = 93.4932
+rect_rotation = 23.2911
+texture = ExtResource( 16 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect4" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+margin_left = -548.226
+margin_top = -365.717
+margin_right = 51.7736
+margin_bottom = 234.283
+rect_rotation = -1.45019
+texture = ExtResource( 11 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect12" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+margin_left = -378.556
+margin_top = -456.869
+margin_right = 221.444
+margin_bottom = 143.131
+rect_rotation = 17.5684
+texture = ExtResource( 9 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect7" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+margin_left = -610.499
+margin_top = -227.634
+margin_right = -10.499
+margin_bottom = 372.366
+rect_rotation = -22.2675
+texture = ExtResource( 10 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect9" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+margin_left = -642.086
+margin_top = -322.397
+margin_right = -42.0862
+margin_bottom = 277.603
+rect_rotation = -14.2658
+texture = ExtResource( 7 )
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect11" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+margin_left = -544.617
+margin_top = -289.004
+margin_right = 55.3835
+margin_bottom = 310.996
+rect_rotation = -10.0206
+texture = ExtResource( 14 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager"]
+autoplay = "idle"
+anims/idle = SubResource( 5 )
+anims/walk = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.8, 0 )
+shape = SubResource( 7 )
