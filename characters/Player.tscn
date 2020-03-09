@@ -1,17 +1,17 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://characters/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/WeaponsManager.gd" type="Script" id=2]
 [ext_resource path="res://sprites/weapons/morningstar1_noshadow.png" type="Texture" id=3]
 [ext_resource path="res://sprites/weapons/crossbow2_noshadow.png" type="Texture" id=4]
-[ext_resource path="res://sprites/weapons/spwpn_sceptre_of_torment_noshadow.png" type="Texture" id=5]
-[ext_resource path="res://sprites/weapons/wands/gem_iron_noshadow.png" type="Texture" id=6]
-[ext_resource path="res://sprites/weapons/wands/gem_copper_noshadow.png" type="Texture" id=7]
-[ext_resource path="res://sprites/weapons/wands/gem_silver_noshadow.png" type="Texture" id=8]
+[ext_resource path="res://sprites/weapons/spwpn_sceptre_of_asmodeus_noshadow.png" type="Texture" id=5]
+[ext_resource path="res://sprites/weapons/wands/staff08_noshadow.png" type="Texture" id=6]
+[ext_resource path="res://sprites/weapons/wands/spwpn_sceptre_of_torment_noshadow.png" type="Texture" id=7]
+[ext_resource path="res://sprites/weapons/wands/staff04_noshadow.png" type="Texture" id=8]
 [ext_resource path="res://sprites/weapons/wands/gem_bone_noshadow.png" type="Texture" id=9]
 [ext_resource path="res://sprites/weapons/wands/gem_gold_noshadow.png" type="Texture" id=10]
 [ext_resource path="res://sprites/weapons/wands/gem_lead_noshadow.png" type="Texture" id=11]
-[ext_resource path="res://sprites/weapons/wands/gem_plastic_noshadow.png" type="Texture" id=12]
+[ext_resource path="res://sprites/weapons/wands/spwpn_staff_of_dispater_noshadow.png" type="Texture" id=12]
 [ext_resource path="res://weapons/Crossbow.gd" type="Script" id=13]
 [ext_resource path="res://sprites/weapons/wands/gem_brass_noshadow.png" type="Texture" id=14]
 [ext_resource path="res://sprites/weapons/wands/gem_ivory_noshadow.png" type="Texture" id=15]
@@ -21,6 +21,17 @@
 [ext_resource path="res://sprites/weapons/hand4.png" type="Texture" id=19]
 [ext_resource path="res://sprites/weapons/cloud_grey_smoke.png" type="Texture" id=20]
 [ext_resource path="res://weapons/Mace.gd" type="Script" id=21]
+[ext_resource path="res://sprites/projectiles/cloud_fire0.png" type="Texture" id=22]
+[ext_resource path="res://sprites/projectiles/cloud_fire1.png" type="Texture" id=23]
+[ext_resource path="res://sprites/projectiles/cloud_fire2.png" type="Texture" id=24]
+[ext_resource path="res://weapons/FireballStaff.gd" type="Script" id=25]
+[ext_resource path="res://sprites/projectiles/bolt04.png" type="Texture" id=26]
+[ext_resource path="res://sprites/projectiles/bolt06.png" type="Texture" id=27]
+[ext_resource path="res://sprites/projectiles/bolt01.png" type="Texture" id=28]
+[ext_resource path="res://sprites/projectiles/bolt03.png" type="Texture" id=29]
+[ext_resource path="res://sprites/projectiles/bolt05.png" type="Texture" id=30]
+[ext_resource path="res://sprites/projectiles/bolt02.png" type="Texture" id=31]
+[ext_resource path="res://weapons/Wands.gd" type="Script" id=32]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -333,6 +344,152 @@ tracks/10/keys = {
 }
 
 [sub_resource type="Animation" id=5]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaffGraphic:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -615.068, -427.685 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StaffGraphic:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("StaffGraphic/BlastEffect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "shoot"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaffGraphic/BlastEffect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StaffGraphic/BlastEffect/FireBlast:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("StaffGraphic/BlastEffect/FireBlast2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("StaffGraphic/BlastEffect/FireBlast3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("StaffGraphic:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -633.574, -592.39 ), Vector2( -624.321, -510.037 ), Vector2( -615.068, -427.685 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("StaffGraphic:rect_rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 14.3393, 7.16964, 0.0 ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("AnimationPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "idle", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "fire"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flashes:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Weapons:rect_position")
 tracks/0/interp = 1
@@ -346,7 +503,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -362,11 +519,12 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 22, 44 ) ]
 }
 
-[sub_resource type="CapsuleShape" id=7]
+[sub_resource type="CapsuleShape" id=10]
 radius = 0.5
 height = 0.5
 
 [node name="Player" type="KinematicBody"]
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="." groups=[
@@ -615,10 +773,12 @@ anims/idle = SubResource( 3 )
 anims/shoot = SubResource( 4 )
 
 [node name="FireballStaff" type="Control" parent="Camera/WeaponsManager/Weapons"]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -631,20 +791,83 @@ margin_bottom = 172.315
 texture = ExtResource( 5 )
 stretch_mode = 1
 flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MagicMissile" type="Control" parent="Camera/WeaponsManager/Weapons"]
+[node name="BlastEffect" type="Control" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic"]
+margin_left = 615.068
+margin_top = 427.685
+margin_right = 655.068
+margin_bottom = 467.685
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireBlast" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic/BlastEffect"]
 visible = false
+margin_left = -830.471
+margin_top = -606.962
+margin_right = -230.471
+margin_bottom = -6.96161
+texture = ExtResource( 24 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireBlast2" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic/BlastEffect"]
+visible = false
+margin_left = -830.471
+margin_top = -606.962
+margin_right = -230.471
+margin_bottom = -6.96161
+texture = ExtResource( 23 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireBlast3" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic/BlastEffect"]
+visible = false
+margin_left = -830.471
+margin_top = -606.962
+margin_right = -230.471
+margin_bottom = -6.96161
+texture = ExtResource( 22 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager/Weapons/FireballStaff"]
+autoplay = "idle"
+anims/idle = SubResource( 5 )
+anims/shoot = SubResource( 6 )
+
+[node name="Wands" type="Control" parent="Camera/WeaponsManager/Weapons"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect5" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
-margin_left = -523.859
-margin_top = -525.459
-margin_right = 76.1409
-margin_bottom = 74.5406
-rect_rotation = 11.99
+[node name="WandsGraphic" type="Control" parent="Camera/WeaponsManager/Weapons/Wands"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect5" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/WandsGraphic"]
+margin_left = -492.399
+margin_top = -590.231
+margin_right = 107.601
+margin_bottom = 9.76898
+rect_rotation = 15.0783
 texture = ExtResource( 15 )
 stretch_mode = 1
 flip_h = true
@@ -652,17 +875,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect6" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
-margin_left = -630.354
-margin_top = -408.134
-margin_right = -30.354
-margin_bottom = 191.866
-rect_rotation = -7.82178
-texture = ExtResource( 6 )
-stretch_mode = 1
-flip_h = true
-
-[node name="TextureRect" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+[node name="TextureRect" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/WandsGraphic"]
 margin_left = -541.909
 margin_top = -427.989
 margin_right = 58.0908
@@ -672,27 +885,27 @@ texture = ExtResource( 17 )
 stretch_mode = 1
 flip_h = true
 
-[node name="TextureRect3" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
-margin_left = -412.852
-margin_top = -504.702
-margin_right = 187.148
-margin_bottom = 95.2982
+[node name="TextureRect3" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/WandsGraphic"]
+margin_left = -364.736
+margin_top = -660.154
+margin_right = 235.264
+margin_bottom = -60.1537
 rect_rotation = 22.9774
-texture = ExtResource( 12 )
-stretch_mode = 1
-flip_h = true
-
-[node name="TextureRect2" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
-margin_left = -430.902
-margin_top = -388.279
-margin_right = 169.098
-margin_bottom = 211.721
-rect_rotation = 8.02425
 texture = ExtResource( 8 )
 stretch_mode = 1
 flip_h = true
 
-[node name="TextureRect10" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+[node name="TextureRect2" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/WandsGraphic"]
+margin_left = -467.914
+margin_top = -449.349
+margin_right = 132.086
+margin_bottom = 150.651
+rect_rotation = 8.02425
+texture = ExtResource( 7 )
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect10" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/WandsGraphic"]
 margin_left = -353.286
 margin_top = -506.507
 margin_right = 246.714
@@ -705,7 +918,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect4" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+[node name="TextureRect4" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/WandsGraphic"]
 margin_left = -548.226
 margin_top = -365.717
 margin_right = 51.7736
@@ -718,7 +931,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect12" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+[node name="TextureRect6" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/WandsGraphic"]
+margin_left = -735.839
+margin_top = -476.607
+margin_right = -135.839
+margin_bottom = 123.393
+rect_rotation = -6.09783
+texture = ExtResource( 12 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect12" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/WandsGraphic"]
 margin_left = -378.556
 margin_top = -456.869
 margin_right = 221.444
@@ -731,7 +957,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect7" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+[node name="TextureRect7" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/WandsGraphic"]
 margin_left = -610.499
 margin_top = -227.634
 margin_right = -10.499
@@ -744,17 +970,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect9" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
-margin_left = -642.086
-margin_top = -322.397
-margin_right = -42.0862
-margin_bottom = 277.603
-rect_rotation = -14.2658
-texture = ExtResource( 7 )
+[node name="TextureRect9" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/WandsGraphic"]
+margin_left = -747.571
+margin_top = -279.833
+margin_right = -147.572
+margin_bottom = 320.167
+rect_rotation = -17.2304
+texture = ExtResource( 6 )
 stretch_mode = 1
 flip_h = true
 
-[node name="TextureRect11" type="TextureRect" parent="Camera/WeaponsManager/Weapons/MagicMissile"]
+[node name="TextureRect11" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/WandsGraphic"]
 margin_left = -544.617
 margin_top = -289.004
 margin_right = 55.3835
@@ -767,11 +993,164 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Flashes" type="Control" parent="Camera/WeaponsManager/Weapons/Wands"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect22" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/Flashes"]
+visible = false
+margin_left = -541.508
+margin_top = -663.895
+margin_right = -241.508
+margin_bottom = -363.895
+rect_rotation = 15.0783
+texture = ExtResource( 30 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect21" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/Flashes"]
+visible = false
+margin_left = -613.118
+margin_top = -502.881
+margin_right = -313.118
+margin_bottom = -202.881
+rect_rotation = 1.81467
+texture = ExtResource( 31 )
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect20" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/Flashes"]
+visible = false
+margin_left = -410.162
+margin_top = -774.334
+margin_right = -110.162
+margin_bottom = -474.334
+rect_rotation = 22.9774
+texture = ExtResource( 27 )
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect19" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/Flashes"]
+visible = false
+margin_left = -507.202
+margin_top = -561.073
+margin_right = -207.202
+margin_bottom = -261.073
+rect_rotation = 8.02425
+texture = ExtResource( 26 )
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect18" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/Flashes"]
+visible = false
+margin_left = -368.019
+margin_top = -621.914
+margin_right = -68.0188
+margin_bottom = -321.914
+rect_rotation = 23.2911
+texture = ExtResource( 28 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect17" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/Flashes"]
+visible = false
+margin_left = -640.306
+margin_top = -433.243
+margin_right = -340.306
+margin_bottom = -133.243
+rect_rotation = -1.45019
+texture = ExtResource( 29 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect16" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/Flashes"]
+visible = false
+margin_left = -804.592
+margin_top = -529.4
+margin_right = -504.592
+margin_bottom = -229.4
+rect_rotation = -6.09783
+texture = ExtResource( 27 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect15" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/Flashes"]
+visible = false
+margin_left = -412.933
+margin_top = -540.355
+margin_right = -112.933
+margin_bottom = -240.355
+rect_rotation = 17.5684
+texture = ExtResource( 26 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect8" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/Flashes"]
+visible = false
+margin_left = -628.915
+margin_top = -301.298
+margin_right = -328.915
+margin_bottom = -1.29828
+rect_rotation = -22.2675
+texture = ExtResource( 26 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect14" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/Flashes"]
+visible = false
+margin_left = -832.285
+margin_top = -317.893
+margin_right = -532.285
+margin_bottom = -17.8925
+rect_rotation = -17.2304
+texture = ExtResource( 27 )
+stretch_mode = 1
+flip_h = true
+
+[node name="TextureRect13" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Wands/Flashes"]
+visible = false
+margin_left = -608.459
+margin_top = -356.53
+margin_right = -308.459
+margin_bottom = -56.5295
+rect_rotation = -10.0206
+texture = ExtResource( 26 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager/Weapons/Wands"]
+anims/fire = SubResource( 7 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager"]
 autoplay = "idle"
-anims/idle = SubResource( 5 )
-anims/walk = SubResource( 6 )
+anims/idle = SubResource( 8 )
+anims/walk = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.8, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )

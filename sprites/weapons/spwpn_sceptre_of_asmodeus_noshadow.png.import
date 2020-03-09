@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spwpn_sceptre_of_torment_noshadow.png-bc874776433d351fc7ba2b2863c8b02e.stex"
+path="res://.import/spwpn_sceptre_of_asmodeus_noshadow.png-bf5cd747bae19f21507966b3335e0a80.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/weapons/spwpn_sceptre_of_torment_noshadow.png"
-dest_files=[ "res://.import/spwpn_sceptre_of_torment_noshadow.png-bc874776433d351fc7ba2b2863c8b02e.stex" ]
+source_file="res://sprites/weapons/spwpn_sceptre_of_asmodeus_noshadow.png"
+dest_files=[ "res://.import/spwpn_sceptre_of_asmodeus_noshadow.png-bf5cd747bae19f21507966b3335e0a80.stex" ]
 
 [params]
 

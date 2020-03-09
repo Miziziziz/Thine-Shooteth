@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud_fire1.png-6784f1ade8871726c9b1dfaa42121b15.stex"
+path="res://.import/spwpn_staff_of_dispater_noshadow.png-1c20a17d2c1aed72e6a709c3b1ce6cfa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/projectiles/cloud_fire1.png"
-dest_files=[ "res://.import/cloud_fire1.png-6784f1ade8871726c9b1dfaa42121b15.stex" ]
+source_file="res://sprites/weapons/wands/spwpn_staff_of_dispater_noshadow.png"
+dest_files=[ "res://.import/spwpn_staff_of_dispater_noshadow.png-1c20a17d2c1aed72e6a709c3b1ce6cfa.stex" ]
 
 [params]
 
@@ -23,7 +23,7 @@ flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

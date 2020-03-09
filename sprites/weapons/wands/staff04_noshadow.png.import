@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud_fire1.png-6784f1ade8871726c9b1dfaa42121b15.stex"
+path="res://.import/staff04_noshadow.png-211e3a0528acd48a4564b4f7bd0ca000.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/projectiles/cloud_fire1.png"
-dest_files=[ "res://.import/cloud_fire1.png-6784f1ade8871726c9b1dfaa42121b15.stex" ]
+source_file="res://sprites/weapons/wands/staff04_noshadow.png"
+dest_files=[ "res://.import/staff04_noshadow.png-211e3a0528acd48a4564b4f7bd0ca000.stex" ]
 
 [params]
 
@@ -23,7 +23,7 @@ flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
