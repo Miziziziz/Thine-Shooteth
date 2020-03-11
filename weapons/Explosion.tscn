@@ -37,6 +37,7 @@ color_ramp = SubResource( 3 )
 [sub_resource type="QuadMesh" id=5]
 
 [sub_resource type="SphereShape" id=6]
+radius = 3.0
 
 [node name="Explosion" type="Area"]
 collision_layer = 0

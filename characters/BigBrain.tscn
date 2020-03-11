@@ -1,0 +1,270 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://sprites/monsters/giant_orange_brain.png" type="Texture" id=1]
+[ext_resource path="res://characters/BigBrain.gd" type="Script" id=2]
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="Animation" id=5]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DeathGraphics:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DeathGraphics/BodyChunk:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.03203, 0 ), Vector3( -0.417194, 0.213533, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DeathGraphics/BodyChunk2:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.03203, 0 ), Vector3( 0.740611, 0.225281, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DeathGraphics/BodyChunk3:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.826441, 0 ), Vector3( 0, 0.328109, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DeathGraphics/Particles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "hover"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.5412, 0 ), Vector3( 0, 1.76639, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DeathGraphics:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DeathGraphics/Particles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.384314, 0.890196, 0.0745098, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0.992157, 0.231373, 0.231373, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=12]
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=13]
+spread = 25.35
+initial_velocity = 6.0
+scale = 0.4
+scale_curve = SubResource( 8 )
+color = Color( 0.537255, 0, 0, 1 )
+
+[sub_resource type="QuadMesh" id=10]
+
+[node name="BigBrain" type="KinematicBody"]
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5412, 0 )
+shape = SubResource( 1 )
+
+[node name="Body" type="Sprite3D" parent="."]
+transform = Transform( 7.03891, 0, 0, 0, 7.03891, 0, 0, 0, 7.03891, 0, 1.5412, 0 )
+billboard = 1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 33, 25 )
+
+[node name="Shadow" type="Sprite3D" parent="."]
+transform = Transform( 7.03891, 0, 0, 0, 7.03891, 0, 0, 0, 7.03891, 0, 0.262501, 0 )
+billboard = 1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 1, 24, 28, 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "hover"
+anims/death = SubResource( 5 )
+anims/hover = SubResource( 2 )
+
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 4 )
+anims/hurt = SubResource( 11 )
+
+[node name="DeathGraphics" type="Spatial" parent="."]
+visible = false
+
+[node name="BodyChunk" type="Sprite3D" parent="DeathGraphics"]
+transform = Transform( 7.03891, 0, 0, 0, 7.03891, 0, 0, 0, 7.03891, 0, 1.03203, 0 )
+centered = false
+offset = Vector2( -16.311, 0 )
+billboard = 1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 19 )
+
+[node name="BodyChunk2" type="Sprite3D" parent="DeathGraphics"]
+transform = Transform( 7.03891, 0, 0, 0, 7.03891, 0, 0, 0, 7.03891, 0, 1.03203, 0 )
+centered = false
+billboard = 1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 15, 19 )
+
+[node name="BodyChunk3" type="Sprite3D" parent="DeathGraphics"]
+transform = Transform( 7.03891, 0, 0, 0, 7.03891, 0, 0, 0, 7.03891, 0, 0.826441, 0 )
+billboard = 1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 19, 31, 6 )
+
+[node name="Particles" type="Particles" parent="DeathGraphics"]
+transform = Transform( 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0 )
+material_override = SubResource( 12 )
+emitting = false
+amount = 32
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 13 )
+draw_pass_1 = SubResource( 10 )

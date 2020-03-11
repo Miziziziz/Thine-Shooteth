@@ -1,5 +1,6 @@
 extends Control
 
+var damage = 20
 export var attack_range = 2
 
 onready var anim = $AnimationPlayer
@@ -20,7 +21,8 @@ func fire(attack_input_just_pressed, attack_input_held, _attack_point):
 func attack():
 	var space_state = attack_point.get_world().get_direct_space_state()
 	var pos = attack_point.global_transform.origin
-	var result = space_state.intersect_ray(pos, pos + -attack_point.global_transform.basis.z * attack_range)
-	if result:
-		pass
+	var result = space_state.intersect_ray(pos, pos + -attack_point.global_transform.basis.z * attack_range,[],1 + 2)
+	if result and result.collider.has_method("hurt"):
+		result.collider.hurt(damage, -attack_point.global_transform.basis.z)
+		 
 	

@@ -77,3 +77,8 @@ func _physics_process(delta):
 	if collision:
 		hit_something = true
 		$CollisionShape.disabled = true
+		if collision.collider.has_method("hurt"):
+			collision.collider.hurt(damage, -global_transform.basis.z)
+			smoke_particles.emitting = true
+			dead = true
+			$Sprite3D.hide()

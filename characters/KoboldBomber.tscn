@@ -1,0 +1,335 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://sprites/projectiles/fire_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://sprites/monsters/big_kobold_new.png" type="Texture" id=2]
+[ext_resource path="res://characters/KoboldBomber.gd" type="Script" id=3]
+[ext_resource path="res://characters/Gib.gd" type="Script" id=4]
+[ext_resource path="res://characters/EnableGibs.gd" type="Script" id=5]
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="Animation" id=6]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Graphics:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Graphics:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Graphics:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Graphics:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Graphics/FireBall:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "run"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Graphics:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector3( 0, 1, 0 ), Vector3( 0.2, 1.253, 0 ), Vector3( 0, 1, 0 ), Vector3( -0.2, 1.253, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Graphics:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1.253, -13.733 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 13.733 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Graphics/FireBall:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 1.6
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("../FireBall:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0, 1, 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../FireBall:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../FireBall:flip_v")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0.878431, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=15]
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+spread = 25.35
+initial_velocity = 8.0
+scale = 0.4
+scale_curve = SubResource( 8 )
+color = Color( 0.537255, 0, 0, 1 )
+
+[sub_resource type="QuadMesh" id=16]
+
+[sub_resource type="ParticlesMaterial" id=9]
+spread = 25.35
+initial_velocity = 1.0
+scale = 0.4
+scale_curve = SubResource( 8 )
+color = Color( 0.537255, 0, 0, 1 )
+
+[sub_resource type="SphereShape" id=13]
+radius = 0.421774
+
+[node name="KoboldBomber" type="KinematicBody"]
+collision_layer = 2
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/death = SubResource( 6 )
+anims/idle = SubResource( 3 )
+anims/run = SubResource( 4 )
+
+[node name="Graphics" type="Sprite3D" parent="."]
+transform = Transform( 6.61682, 0, 0, 0, 6.61682, 0, 0, 0, 6.61682, 0, 1, 0 )
+texture = ExtResource( 2 )
+
+[node name="FireBall" type="Sprite3D" parent="Graphics"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113893, 0.101736, 0.0209623 )
+visible = false
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics/FireBall"]
+autoplay = "idle"
+anims/idle = SubResource( 2 )
+
+[node name="HurtAnimationPlayer" type="AnimationPlayer" parent="Graphics"]
+anims/hurt = SubResource( 5 )
+
+[node name="DetonateTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[node name="Gibs" type="Spatial" parent="." groups=[
+"instanced",
+]]
+script = ExtResource( 5 )
+
+[node name="Particles" type="Particles" parent="Gibs"]
+transform = Transform( 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0 )
+material_override = SubResource( 15 )
+emitting = false
+amount = 32
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.85
+local_coords = false
+process_material = SubResource( 14 )
+draw_pass_1 = SubResource( 16 )
+
+[node name="KoboldGib" type="KinematicBody" parent="Gibs"]
+transform = Transform( 0.972292, 0.233768, 0, -0.233768, 0.972292, 0, 0, 0, 1, 0.0751652, 0.991731, 0 )
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="BloodTrail" type="Particles" parent="Gibs/KoboldGib"]
+transform = Transform( 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0 )
+material_override = SubResource( 15 )
+emitting = false
+amount = 16
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 9 )
+draw_pass_1 = SubResource( 16 )
+
+[node name="Graphic" type="Sprite3D" parent="Gibs/KoboldGib"]
+transform = Transform( 6.617, 0, 0, 0, 6.617, 0, 0, 0, 6.617, 0, 0, 0 )
+billboard = 1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 6, -0.840417, 15, 13.8404 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Gibs/KoboldGib"]
+shape = SubResource( 13 )
+
+[node name="KoboldGib2" type="KinematicBody" parent="Gibs"]
+transform = Transform( 0.977706, -0.209977, 0, 0.209977, 0.977706, 0, 0, 0, 1, 0.0751652, 0.991731, 0 )
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="BloodTrail" type="Particles" parent="Gibs/KoboldGib2"]
+transform = Transform( 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0 )
+material_override = SubResource( 15 )
+emitting = false
+amount = 16
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 9 )
+draw_pass_1 = SubResource( 16 )
+
+[node name="Graphic" type="Sprite3D" parent="Gibs/KoboldGib2"]
+transform = Transform( 6.617, 0, 0, 0, 6.617, 0, 0, 0, 6.617, 0, 0, 0 )
+billboard = 1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 24, 3, 6, 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Gibs/KoboldGib2"]
+shape = SubResource( 13 )
+
+[node name="KoboldGib3" type="KinematicBody" parent="Gibs"]
+transform = Transform( 0.980271, -0.197657, 0, 0.193956, 0.961917, 0.192608, -0.0380703, -0.188808, 0.981276, 0.0751652, 0.991731, 0 )
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="BloodTrail" type="Particles" parent="Gibs/KoboldGib3"]
+transform = Transform( 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0 )
+material_override = SubResource( 15 )
+emitting = false
+amount = 16
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 9 )
+draw_pass_1 = SubResource( 16 )
+
+[node name="Graphic" type="Sprite3D" parent="Gibs/KoboldGib3"]
+transform = Transform( 6.617, 0, 0, 0, 6.617, 0, 0, 0, 6.617, 0, 0, 0 )
+billboard = 1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 5, 24, 8, 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Gibs/KoboldGib3"]
+shape = SubResource( 13 )
+[connection signal="timeout" from="DetonateTimer" to="." method="explode"]
