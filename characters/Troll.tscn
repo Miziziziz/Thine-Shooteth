@@ -6,9 +6,10 @@
 [ext_resource path="res://characters/Troll.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
-radius = 1.24906
+radius = 0.723841
+height = 0.561925
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "attack"
 length = 0.6
 tracks/0/type = "value"
@@ -98,7 +99,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 resource_name = "death"
 length = 0.4
 tracks/0/type = "value"
@@ -282,7 +283,7 @@ tracks/14/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "idle"
 length = 0.4
 loop = true
@@ -419,8 +420,7 @@ tracks/10/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "run"
+[sub_resource type="Animation" id=5]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -496,7 +496,7 @@ tracks/5/keys = {
 "values": [ Vector3( 0.0791665, 0.0936414, 0 ), Vector3( 0.0791665, 0.104758, 0 ) ]
 }
 
-[sub_resource type="SpatialMaterial" id=12]
+[sub_resource type="SpatialMaterial" id=6]
 vertex_color_use_as_albedo = true
 params_billboard_mode = 3
 particles_anim_h_frames = 1
@@ -509,7 +509,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 [sub_resource type="CurveTexture" id=8]
 curve = SubResource( 7 )
 
-[sub_resource type="ParticlesMaterial" id=13]
+[sub_resource type="ParticlesMaterial" id=9]
 spread = 25.35
 initial_velocity = 6.0
 scale = 0.4
@@ -518,7 +518,7 @@ color = Color( 0.537255, 0, 0, 1 )
 
 [sub_resource type="QuadMesh" id=10]
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=11]
 resource_name = "hurt"
 length = 0.2
 tracks/0/type = "value"
@@ -612,11 +612,11 @@ collision_mask = 3
 script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.235387, 1.76714, 0 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.143325, 1.01052, 0 )
 shape = SubResource( 1 )
 
 [node name="Body" type="Spatial" parent="."]
-transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.56678, 0 )
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 1.07459, 0 )
 
 [node name="Body" type="Sprite3D" parent="Body"]
 texture = ExtResource( 3 )
@@ -664,20 +664,20 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0.316067, -0.936414, 0 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 4 )
-anims/death = SubResource( 6 )
-anims/idle = SubResource( 5 )
-anims/run = SubResource( 3 )
+anims/attack = SubResource( 2 )
+anims/death = SubResource( 12 )
+anims/idle = SubResource( 4 )
+anims/run = SubResource( 5 )
 
 [node name="BloodParticles" type="Particles" parent="."]
 transform = Transform( 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0 )
-material_override = SubResource( 12 )
+material_override = SubResource( 6 )
 emitting = false
 amount = 32
 lifetime = 2.0
 local_coords = false
-process_material = SubResource( 13 )
+process_material = SubResource( 9 )
 draw_pass_1 = SubResource( 10 )
 
 [node name="HurtAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hurt = SubResource( 14 )
+anims/hurt = SubResource( 11 )

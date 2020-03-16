@@ -28,6 +28,8 @@ func fire(attack_input_just_pressed, attack_input_held, attack_point):
 		get_tree().get_root().add_child(magic_missile_inst)
 		magic_missile_inst.global_transform = attack_point.global_transform
 		magic_missile_inst.set_new_sprite(flashes[flash_ind].texture)
+		return 1
+	return 0
 
 func get_time():
 	return OS.get_ticks_msec() / 1000.0

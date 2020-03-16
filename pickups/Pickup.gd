@@ -1,0 +1,6 @@
+extends StaticBody
+
+enum PICKUP_TYPES {HEALTH, CROSSBOW, WAND, FIREBALL, CROSSBOW_AMMO, WAND_AMMO, FIREBALL_AMMO}
+export(PICKUP_TYPES) var pickup_type = PICKUP_TYPES.HEALTH
+export var amount = 1
+

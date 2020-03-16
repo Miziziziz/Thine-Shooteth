@@ -21,6 +21,9 @@ var cur_lean = 0.0
 var lean_rate_out = 55.0
 var lean_rate_in = 15.0
 
+const MAX_HEALTH = 100
+var cur_health = MAX_HEALTH
+
 var hotkeys = {
 	KEY_1: 0,
 	KEY_2: 1,
@@ -95,3 +98,15 @@ func _physics_process(delta):
 	global_transform.origin.y = 0
 	
 	weapons_manager.set_moving(Vector3.ZERO != move_vec)
+
+signal update_health
+func pickup_item(type:String, amount:int):
+	if type == "health":
+		cur_health += amount
+		if cur_health >= MAX_HEALTH:
+			cur_health = MAX_HEALTH
+	emit_signal("update_health", cur_health)
+
+func hurt(damage: int, dir: Vector3):
+	cur_health -= damage
+	emit_signal("update_health", cur_health)

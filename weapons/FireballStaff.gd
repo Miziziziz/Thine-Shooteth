@@ -17,3 +17,5 @@ func fire(attack_input_just_pressed, attack_input_held, attack_point):
 		get_tree().get_root().add_child(fireball_inst)
 		fireball_inst.global_transform = attack_point.global_transform
 		fireball_inst.init()
+		return 1
+	return 0

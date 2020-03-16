@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://characters/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/WeaponsManager.gd" type="Script" id=2]
@@ -32,6 +32,12 @@
 [ext_resource path="res://sprites/projectiles/bolt05.png" type="Texture" id=30]
 [ext_resource path="res://sprites/projectiles/bolt02.png" type="Texture" id=31]
 [ext_resource path="res://weapons/Wands.gd" type="Script" id=32]
+[ext_resource path="res://characters/PickupDetector.gd" type="Script" id=33]
+[ext_resource path="res://characters/HealthAndAmmoDisplay.gd" type="Script" id=34]
+[ext_resource path="res://sprites/weapons/wands/gem_iron_noshadow.png" type="Texture" id=35]
+[ext_resource path="res://sprites/weapons/wands/gem_plastic_noshadow.png" type="Texture" id=36]
+[ext_resource path="res://sprites/weapons/wands/gem_silver_noshadow.png" type="Texture" id=37]
+[ext_resource path="res://characters/WeaponsDisplay.gd" type="Script" id=38]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -343,6 +349,22 @@ tracks/10/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "fire"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flashes:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [sub_resource type="Animation" id=5]
 resource_name = "idle"
 loop = true
@@ -473,22 +495,6 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "fire"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Flashes:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-
 [sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Weapons:rect_position")
@@ -522,6 +528,8 @@ tracks/0/keys = {
 [sub_resource type="CapsuleShape" id=10]
 radius = 0.5
 height = 0.5
+
+[sub_resource type="SphereShape" id=11]
 
 [node name="Player" type="KinematicBody" groups=[
 "player",
@@ -774,79 +782,6 @@ __meta__ = {
 autoplay = "idle"
 anims/idle = SubResource( 3 )
 anims/shoot = SubResource( 4 )
-
-[node name="FireballStaff" type="Control" parent="Camera/WeaponsManager/Weapons"]
-visible = false
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 25 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StaffGraphic" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff"]
-margin_left = -615.068
-margin_top = -427.685
-margin_right = -15.0679
-margin_bottom = 172.315
-texture = ExtResource( 5 )
-stretch_mode = 1
-flip_h = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BlastEffect" type="Control" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic"]
-margin_left = 615.068
-margin_top = 427.685
-margin_right = 655.068
-margin_bottom = 467.685
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FireBlast" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic/BlastEffect"]
-visible = false
-margin_left = -830.471
-margin_top = -606.962
-margin_right = -230.471
-margin_bottom = -6.96161
-texture = ExtResource( 24 )
-stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FireBlast2" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic/BlastEffect"]
-visible = false
-margin_left = -830.471
-margin_top = -606.962
-margin_right = -230.471
-margin_bottom = -6.96161
-texture = ExtResource( 23 )
-stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FireBlast3" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic/BlastEffect"]
-visible = false
-margin_left = -830.471
-margin_top = -606.962
-margin_right = -230.471
-margin_bottom = -6.96161
-texture = ExtResource( 22 )
-stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager/Weapons/FireballStaff"]
-autoplay = "idle"
-anims/idle = SubResource( 5 )
-anims/shoot = SubResource( 6 )
 
 [node name="Wands" type="Control" parent="Camera/WeaponsManager/Weapons"]
 anchor_left = 1.0
@@ -1149,6 +1084,79 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager/Weapons/Wands"]
 anims/fire = SubResource( 7 )
 
+[node name="FireballStaff" type="Control" parent="Camera/WeaponsManager/Weapons"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaffGraphic" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff"]
+margin_left = -615.068
+margin_top = -427.685
+margin_right = -15.0679
+margin_bottom = 172.315
+texture = ExtResource( 5 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlastEffect" type="Control" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic"]
+margin_left = 615.068
+margin_top = 427.685
+margin_right = 655.068
+margin_bottom = 467.685
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireBlast" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic/BlastEffect"]
+visible = false
+margin_left = -830.471
+margin_top = -606.962
+margin_right = -230.471
+margin_bottom = -6.96161
+texture = ExtResource( 24 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireBlast2" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic/BlastEffect"]
+visible = false
+margin_left = -830.471
+margin_top = -606.962
+margin_right = -230.471
+margin_bottom = -6.96161
+texture = ExtResource( 23 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireBlast3" type="TextureRect" parent="Camera/WeaponsManager/Weapons/FireballStaff/StaffGraphic/BlastEffect"]
+visible = false
+margin_left = -830.471
+margin_top = -606.962
+margin_right = -230.471
+margin_bottom = -6.96161
+texture = ExtResource( 22 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager/Weapons/FireballStaff"]
+autoplay = "idle"
+anims/idle = SubResource( 5 )
+anims/shoot = SubResource( 6 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager"]
 autoplay = "idle"
 anims/idle = SubResource( 8 )
@@ -1157,3 +1165,188 @@ anims/walk = SubResource( 9 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.8, 0 )
 shape = SubResource( 10 )
+
+[node name="PickupDetector" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 33 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PickupDetector"]
+shape = SubResource( 11 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerUI" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthAndAmmoDisplay" type="Panel" parent="CanvasLayer/PlayerUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = -63.0
+margin_right = 108.0
+margin_bottom = -15.0
+script = ExtResource( 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthDisplay" type="Label" parent="CanvasLayer/PlayerUI/HealthAndAmmoDisplay"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Health: 100"
+
+[node name="AmmoDisplay" type="Label" parent="CanvasLayer/PlayerUI/HealthAndAmmoDisplay"]
+margin_top = 16.7601
+margin_right = 67.0
+margin_bottom = 30.7601
+text = "Ammo: 10"
+
+[node name="WeaponsDisplay" type="Panel" parent="CanvasLayer/PlayerUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 119.0
+margin_top = -60.0
+margin_right = 279.0
+margin_bottom = -17.0
+script = ExtResource( 38 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mace" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay"]
+margin_left = 10.0
+margin_top = 1.5
+margin_right = 42.0
+margin_bottom = 41.5
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Mace"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+margin_right = 40.0
+text = "1"
+
+[node name="Crossbow" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay"]
+visible = false
+margin_left = 46.0
+margin_top = 1.5
+margin_right = 78.0
+margin_bottom = 41.5
+texture = ExtResource( 4 )
+
+[node name="Label2" type="Label" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Crossbow"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+margin_right = 40.0
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wands" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay"]
+visible = false
+margin_left = 82.0
+margin_top = 1.5
+margin_right = 114.0
+margin_bottom = 41.5
+texture = ExtResource( 37 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
+margin_left = 4.90558
+margin_top = 3.0188
+margin_right = 44.9056
+margin_bottom = 43.0188
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
+margin_left = 2.64145
+margin_top = -0.377441
+margin_right = 42.6414
+margin_bottom = 39.6226
+texture = ExtResource( 36 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
+margin_left = 4.90558
+margin_top = 3.0188
+margin_right = 44.9056
+margin_bottom = 43.0188
+texture = ExtResource( 35 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
+margin_left = -7.54709
+margin_top = -0.754761
+margin_right = 32.4529
+margin_bottom = 39.2452
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
+margin_left = -2.26414
+margin_top = -3.0188
+margin_right = 37.7359
+margin_bottom = 36.9812
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+margin_right = 40.0
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fireball" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay"]
+visible = false
+margin_left = 118.0
+margin_top = 1.5
+margin_right = 150.0
+margin_bottom = 41.5
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Fireball"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+margin_right = 40.0
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector" type="ColorRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay"]
+margin_right = 47.0
+margin_bottom = 4.0
+[connection signal="update_health" from="." to="CanvasLayer/PlayerUI/HealthAndAmmoDisplay" method="_on_Player_update_health"]
+[connection signal="update_ammo" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/HealthAndAmmoDisplay" method="update_ammo"]
+[connection signal="update_weapon" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/WeaponsDisplay" method="_on_WeaponsManager_update_weapon"]
+[connection signal="picked_up" from="PickupDetector" to="." method="pickup_item"]
+[connection signal="picked_up" from="PickupDetector" to="Camera/WeaponsManager" method="pickup_item"]

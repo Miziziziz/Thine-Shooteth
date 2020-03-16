@@ -23,3 +23,5 @@ func fire(attack_input_just_pressed, attack_input_held, attack_point):
 			get_tree().get_root().add_child(arrow_inst)
 			arrow_inst.global_transform = attack_point.global_transform
 			arrow_inst.rotate_object_local(Vector3.UP, deg2rad(angle))
+		return 1
+	return 0

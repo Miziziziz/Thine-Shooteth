@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://pickups/Pickup.gd" type="Script" id=1]
+[ext_resource path="res://sprites/weapons/wands/staff08_noshadow.png" type="Texture" id=2]
+[ext_resource path="res://sprites/weapons/wands/staff04_noshadow.png" type="Texture" id=3]
+[ext_resource path="res://sprites/weapons/wands/gem_bone_noshadow.png" type="Texture" id=4]
+[ext_resource path="res://sprites/weapons/wands/spwpn_staff_of_dispater_noshadow.png" type="Texture" id=5]
+[ext_resource path="res://sprites/weapons/wands/gem_brass_noshadow.png" type="Texture" id=6]
+[ext_resource path="res://sprites/weapons/wands/gem_bronze_noshadow.png" type="Texture" id=7]
+[ext_resource path="res://pickups/RandomGraphic.gd" type="Script" id=8]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.467211
+
+[node name="WandAmmoPickup" type="StaticBody"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 1 )
+pickup_type = 5
+amount = 20
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.288277, 0 )
+shape = SubResource( 1 )
+
+[node name="RandomGraphic" type="Spatial" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+script = ExtResource( 8 )
+
+[node name="Sprite3D" type="Sprite3D" parent="RandomGraphic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267684, 0 )
+billboard = 1
+texture = ExtResource( 4 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="RandomGraphic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267684, 0 )
+billboard = 1
+texture = ExtResource( 6 )
+
+[node name="Sprite3D3" type="Sprite3D" parent="RandomGraphic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267684, 0 )
+billboard = 1
+texture = ExtResource( 7 )
+
+[node name="Sprite3D4" type="Sprite3D" parent="RandomGraphic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267684, 0 )
+billboard = 1
+texture = ExtResource( 5 )
+
+[node name="Sprite3D5" type="Sprite3D" parent="RandomGraphic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267684, 0 )
+billboard = 1
+texture = ExtResource( 3 )
+
+[node name="Sprite3D6" type="Sprite3D" parent="RandomGraphic"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267684, 0 )
+billboard = 1
+texture = ExtResource( 2 )

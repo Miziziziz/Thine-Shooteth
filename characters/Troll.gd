@@ -85,7 +85,7 @@ func finish_attack():
 	if !has_line_of_sight_to_player():
 		return
 	if global_transform.origin.distance_squared_to(player.global_transform.origin) < attack_range*attack_range:
-		print('hit player')
+		player.hurt(damage, global_transform.origin.direction_to(player.global_transform.origin))
 	set_state_chase()
 
 func hurt(damage: int, dir = Vector3.UP):
