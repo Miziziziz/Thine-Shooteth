@@ -40,7 +40,8 @@ func process_state_chase(delta):
 		set_state_attack()
 
 func process_state_attack(delta):
-	pass
+	if !$AnimationPlayer.is_playing():
+		set_state_chase()
 
 func process_state_dead(delta):
 	pass
@@ -86,7 +87,7 @@ func finish_attack():
 		return
 	if global_transform.origin.distance_squared_to(player.global_transform.origin) < attack_range*attack_range:
 		player.hurt(damage, global_transform.origin.direction_to(player.global_transform.origin))
-	set_state_chase()
+	#set_state_chase()
 
 func hurt(damage: int, dir = Vector3.UP):
 	if cur_state == STATES.DEAD:

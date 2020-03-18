@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 var health = 100
 var ammo = 10
@@ -13,7 +13,10 @@ func update_health(amount):
 
 func update_display():
 	$HealthDisplay.text = "Health: " + str(health)
-	$AmmoDisplay.text = "Ammo: " + str(ammo)
+	var s_ammo = str(ammo)
+	if ammo < 0:
+		s_ammo = "oo"
+	$AmmoDisplay.text = "Ammo: " + s_ammo
 
 
 func _on_Player_update_health(amount):

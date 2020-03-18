@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://characters/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/WeaponsManager.gd" type="Script" id=2]
@@ -38,6 +38,14 @@
 [ext_resource path="res://sprites/weapons/wands/gem_plastic_noshadow.png" type="Texture" id=36]
 [ext_resource path="res://sprites/weapons/wands/gem_silver_noshadow.png" type="Texture" id=37]
 [ext_resource path="res://characters/WeaponsDisplay.gd" type="Script" id=38]
+[ext_resource path="res://ui/slot_cursed.png" type="Texture" id=39]
+[ext_resource path="res://ui/crypt_domino_1b.png" type="Texture" id=40]
+[ext_resource path="res://ui/Masaaki-Regular.otf" type="DynamicFontData" id=41]
+[ext_resource path="res://ui/crosshairs/trap_teleport.png" type="Texture" id=42]
+[ext_resource path="res://characters/Crosshairs.gd" type="Script" id=43]
+[ext_resource path="res://ui/crosshairs/drain_red_2.png" type="Texture" id=44]
+[ext_resource path="res://ui/crosshairs/icicle_5.png" type="Texture" id=45]
+[ext_resource path="res://ui/crosshairs/alarm.png" type="Texture" id=46]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -349,7 +357,7 @@ tracks/10/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "fire"
 length = 0.2
 tracks/0/type = "value"
@@ -365,8 +373,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "idle"
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("StaffGraphic:rect_position")
@@ -405,8 +412,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "shoot"
+[sub_resource type="Animation" id=7]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("StaffGraphic/BlastEffect:visible")
@@ -525,11 +531,107 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 22, 44 ) ]
 }
 
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 0.211622, 0.195564, 0.617457 )
+
 [sub_resource type="CapsuleShape" id=10]
 radius = 0.5
 height = 0.5
 
 [sub_resource type="SphereShape" id=11]
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 41 )
+
+[sub_resource type="Theme" id=13]
+default_font = SubResource( 12 )
+Label/fonts/ = null
+
+[sub_resource type="Animation" id=14]
+resource_name = "hurt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.537255, 0, 0, 0.196078 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "heal"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.333333, 0.537255, 0, 0.196078 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="Player" type="KinematicBody" groups=[
 "player",
@@ -1082,7 +1184,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager/Weapons/Wands"]
-anims/fire = SubResource( 7 )
+anims/fire = SubResource( 5 )
 
 [node name="FireballStaff" type="Control" parent="Camera/WeaponsManager/Weapons"]
 visible = false
@@ -1154,13 +1256,21 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager/Weapons/FireballStaff"]
 autoplay = "idle"
-anims/idle = SubResource( 5 )
-anims/shoot = SubResource( 6 )
+anims/idle = SubResource( 6 )
+anims/shoot = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager"]
 autoplay = "idle"
 anims/idle = SubResource( 8 )
 anims/walk = SubResource( 9 )
+
+[node name="MeleeShape" type="Area" parent="Camera/WeaponsManager"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Camera/WeaponsManager/MeleeShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.544695 )
+shape = SubResource( 16 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.8, 0 )
@@ -1179,51 +1289,36 @@ shape = SubResource( 11 )
 [node name="PlayerUI" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = SubResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthAndAmmoDisplay" type="Panel" parent="CanvasLayer/PlayerUI"]
+[node name="WeaponsDisplay" type="TextureRect" parent="CanvasLayer/PlayerUI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 18.0
-margin_top = -63.0
-margin_right = 108.0
-margin_bottom = -15.0
-script = ExtResource( 34 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthDisplay" type="Label" parent="CanvasLayer/PlayerUI/HealthAndAmmoDisplay"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Health: 100"
-
-[node name="AmmoDisplay" type="Label" parent="CanvasLayer/PlayerUI/HealthAndAmmoDisplay"]
-margin_top = 16.7601
-margin_right = 67.0
-margin_bottom = 30.7601
-text = "Ammo: 10"
-
-[node name="WeaponsDisplay" type="Panel" parent="CanvasLayer/PlayerUI"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 119.0
-margin_top = -60.0
-margin_right = 279.0
-margin_bottom = -17.0
+margin_left = 17.0
+margin_top = -194.0
+margin_right = 264.0
+margin_bottom = -144.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 40 )
+stretch_mode = 2
 script = ExtResource( 38 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Selector" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay"]
+margin_right = 42.0
+margin_bottom = 42.0
+texture = ExtResource( 39 )
+stretch_mode = 1
 
 [node name="Mace" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay"]
-margin_left = 10.0
-margin_top = 1.5
+margin_left = 2.0
+margin_top = 2.0
 margin_right = 42.0
-margin_bottom = 41.5
+margin_bottom = 42.0
 texture = ExtResource( 3 )
+stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1231,35 +1326,37 @@ __meta__ = {
 [node name="Label" type="Label" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Mace"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -14.0
+margin_top = -19.0
 margin_right = 40.0
+margin_bottom = 1.0
 text = "1"
 
 [node name="Crossbow" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay"]
-visible = false
-margin_left = 46.0
-margin_top = 1.5
-margin_right = 78.0
-margin_bottom = 41.5
+margin_left = 42.0
+margin_top = 2.0
+margin_right = 82.0
+margin_bottom = 42.0
 texture = ExtResource( 4 )
+stretch_mode = 4
 
 [node name="Label2" type="Label" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Crossbow"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -14.0
+margin_top = -19.0
 margin_right = 40.0
+margin_bottom = 1.0
 text = "2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Wands" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay"]
-visible = false
 margin_left = 82.0
-margin_top = 1.5
-margin_right = 114.0
-margin_bottom = 41.5
+margin_top = 2.0
+margin_right = 122.0
+margin_bottom = 42.0
 texture = ExtResource( 37 )
+stretch_mode = 4
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
 margin_left = 4.90558
@@ -1314,20 +1411,21 @@ __meta__ = {
 [node name="Label3" type="Label" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -14.0
+margin_top = -19.0
 margin_right = 40.0
+margin_bottom = 1.0
 text = "3"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Fireball" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay"]
-visible = false
-margin_left = 118.0
-margin_top = 1.5
-margin_right = 150.0
-margin_bottom = 41.5
+margin_left = 122.0
+margin_top = 2.0
+margin_right = 162.0
+margin_bottom = 42.0
 texture = ExtResource( 5 )
+stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1335,18 +1433,133 @@ __meta__ = {
 [node name="Label4" type="Label" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Fireball"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -14.0
+margin_top = -19.0
 margin_right = 40.0
+margin_bottom = 1.0
 text = "4"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Selector" type="ColorRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay"]
-margin_right = 47.0
-margin_bottom = 4.0
+[node name="HealthAndAmmoDisplay" type="Control" parent="CanvasLayer/PlayerUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 700.0
+margin_top = -179.0
+margin_right = 771.0
+margin_bottom = -137.0
+rect_scale = Vector2( 4, 4 )
+script = ExtResource( 34 )
+
+[node name="HealthDisplay" type="Label" parent="CanvasLayer/PlayerUI/HealthAndAmmoDisplay"]
+margin_left = -2.63158
+margin_right = 73.3684
+margin_bottom = 20.0
+text = "Health: 100"
+
+[node name="AmmoDisplay" type="Label" parent="CanvasLayer/PlayerUI/HealthAndAmmoDisplay"]
+margin_left = -2.63158
+margin_top = 16.7601
+margin_right = 64.3684
+margin_bottom = 36.7601
+text = "Ammo: 10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshairs" type="Control" parent="CanvasLayer/PlayerUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 43 )
+
+[node name="Mace" type="TextureRect" parent="CanvasLayer/PlayerUI/Crosshairs"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 45 )
+stretch_mode = 1
+
+[node name="Crossbow" type="TextureRect" parent="CanvasLayer/PlayerUI/Crosshairs"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 44 )
+stretch_mode = 1
+
+[node name="Wand" type="TextureRect" parent="CanvasLayer/PlayerUI/Crosshairs"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 42 )
+stretch_mode = 1
+
+[node name="Fireball" type="TextureRect" parent="CanvasLayer/PlayerUI/Crosshairs"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 46 )
+stretch_mode = 1
+
+[node name="PainOverlay" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.537255, 0, 0, 0.196078 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PainOverlay"]
+autoplay = "start"
+anims/hurt = SubResource( 14 )
+anims/start = SubResource( 15 )
+
+[node name="HealOverlay" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.333333, 0.537255, 0, 0.196078 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HealOverlay"]
+autoplay = "start"
+anims/heal = SubResource( 17 )
+anims/start = SubResource( 18 )
+[connection signal="heal" from="." to="CanvasLayer/HealOverlay/AnimationPlayer" method="play" binds= [ "heal" ]]
+[connection signal="hurt" from="." to="CanvasLayer/PainOverlay/AnimationPlayer" method="play" binds= [ "hurt" ]]
 [connection signal="update_health" from="." to="CanvasLayer/PlayerUI/HealthAndAmmoDisplay" method="_on_Player_update_health"]
 [connection signal="update_ammo" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/HealthAndAmmoDisplay" method="update_ammo"]
 [connection signal="update_weapon" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/WeaponsDisplay" method="_on_WeaponsManager_update_weapon"]
-[connection signal="picked_up" from="PickupDetector" to="." method="pickup_item"]
+[connection signal="update_weapon" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/Crosshairs" method="set_crosshair"]
 [connection signal="picked_up" from="PickupDetector" to="Camera/WeaponsManager" method="pickup_item"]
+[connection signal="picked_up" from="PickupDetector" to="." method="pickup_item"]

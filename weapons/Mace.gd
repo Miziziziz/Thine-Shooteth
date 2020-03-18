@@ -1,10 +1,11 @@
 extends Control
 
 var damage = 20
-export var attack_range = 2
+export var attack_range = 4
 
 onready var anim = $AnimationPlayer
 var attack_point = null
+var melee_area : Area = null
 
 func _ready():
 	anim.current_animation = "idle"
@@ -21,8 +22,9 @@ func fire(attack_input_just_pressed, attack_input_held, _attack_point):
 func attack():
 	var space_state = attack_point.get_world().get_direct_space_state()
 	var pos = attack_point.global_transform.origin
-	var result = space_state.intersect_ray(pos, pos + -attack_point.global_transform.basis.z * attack_range,[],1 + 2)
-	if result and result.collider.has_method("hurt"):
-		result.collider.hurt(damage, -attack_point.global_transform.basis.z)
+	
+	for body in melee_area.get_overlapping_bodies():
+		if body.has_method("hurt"):
+			body.hurt(damage, -attack_point.global_transform.basis.z)
 		 
 	

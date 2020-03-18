@@ -91,15 +91,18 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "finish_attack"
+}, {
+"args": [  ],
+"method": "set_state_chase"
 } ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=3]
 resource_name = "death"
 length = 0.4
 tracks/0/type = "value"
@@ -665,7 +668,7 @@ texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 2 )
-anims/death = SubResource( 12 )
+anims/death = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/run = SubResource( 5 )
 

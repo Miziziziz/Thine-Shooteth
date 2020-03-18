@@ -14,6 +14,7 @@ var slots_unlocked = {WEAPON_SLOT_IDS.MACE_SLOT: ''}
 enum WEAPON_SLOT_IDS {MACE_SLOT, CROSSBOW_SLOT, WAND_SLOT, FIREBALL_SLOT}
 
 func _ready():
+	$Weapons/Mace.melee_area = $MeleeShape
 	swap_to_weapon_slot(WEAPON_SLOT_IDS.MACE_SLOT)
 
 func attack(attack_input_just_pressed, attack_input_held):

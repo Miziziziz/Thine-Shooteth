@@ -100,9 +100,12 @@ func _physics_process(delta):
 	weapons_manager.set_moving(Vector3.ZERO != move_vec)
 
 signal update_health
+signal hurt
+signal heal
 func pickup_item(type:String, amount:int):
 	if type == "health":
 		cur_health += amount
+		emit_signal("heal")
 		if cur_health >= MAX_HEALTH:
 			cur_health = MAX_HEALTH
 	emit_signal("update_health", cur_health)
@@ -110,3 +113,4 @@ func pickup_item(type:String, amount:int):
 func hurt(damage: int, dir: Vector3):
 	cur_health -= damage
 	emit_signal("update_health", cur_health)
+	emit_signal("hurt")

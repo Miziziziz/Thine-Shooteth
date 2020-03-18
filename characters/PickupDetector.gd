@@ -8,9 +8,13 @@ func _ready():
 
 func body_entered(coll):
 	if "pickup_type" in coll:
+		var delete_pickup = true
 		match coll.pickup_type:
 			coll.PICKUP_TYPES.HEALTH:
-				emit_signal("picked_up", "health", coll.amount)
+				if get_parent().cur_health == get_parent().MAX_HEALTH:
+					delete_pickup = false
+				else:
+					emit_signal("picked_up", "health", coll.amount)
 			coll.PICKUP_TYPES.CROSSBOW:
 				emit_signal("picked_up", "crossbow", coll.amount)
 			coll.PICKUP_TYPES.WAND: 
@@ -23,4 +27,5 @@ func body_entered(coll):
 				emit_signal("picked_up", "wand_ammo", coll.amount)
 			coll.PICKUP_TYPES.FIREBALL_AMMO:
 				emit_signal("picked_up", "fireball_ammo", coll.amount)
-		coll.queue_free()
+		if delete_pickup:
+			coll.queue_free()
