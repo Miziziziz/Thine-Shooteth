@@ -7,7 +7,7 @@ var cur_state = STATES.IDLE
 
 export var health = 10
 
-var move_speed = 7
+export var move_speed = 7
 var player = null
 onready var nav = get_parent()
 
@@ -21,7 +21,6 @@ func set_state_idle():
 func set_state_attack():
 	cur_state = STATES.ATTACKING
 	$AnimationPlayer.play("run")
-	$DetonateTimer.start()
 
 func set_state_dead():
 	cur_state = STATES.DEAD

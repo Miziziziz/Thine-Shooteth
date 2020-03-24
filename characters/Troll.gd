@@ -7,7 +7,7 @@ export var damage = 5
 export var health = 30
 export var attack_range = 3.5
 export var start_attack_range = 2.5
-var move_speed = 5
+var move_speed = 12
 var player = null
 onready var nav = get_parent()
 

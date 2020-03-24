@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/monsters/kraken_tentacle_segment_southeast_southwest.png" type="Texture" id=1]
+[ext_resource path="res://characters/Kraken/TentacleSegment.gd" type="Script" id=2]
+
+[node name="TentacleSegment" type="Sprite3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.149502, 0 )
+billboard = 1
+texture = ExtResource( 1 )
+script = ExtResource( 2 )

@@ -1,6 +1,6 @@
 extends Area
 
-export var damage = 20
+export var damage = 40
 
 func _ready():
 	# have to wait a couple frames for the area to see everything inside

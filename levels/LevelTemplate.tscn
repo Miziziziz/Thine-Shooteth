@@ -1,0 +1,93 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://DungeonBlocks.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://characters/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://characters/BigBrain.tscn" type="PackedScene" id=3]
+[ext_resource path="res://characters/KoboldBomber.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/Troll.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pickups/WandAmmoPickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://pickups/FireballPickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://pickups/CrossbowPickup.tscn" type="PackedScene" id=8]
+[ext_resource path="res://pickups/HealthPickup.tscn" type="PackedScene" id=9]
+[ext_resource path="res://pickups/FireballAmmoPickup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://pickups/CbowAmmoPickup.tscn" type="PackedScene" id=11]
+[ext_resource path="res://pickups/WandPickup.tscn" type="PackedScene" id=12]
+[ext_resource path="res://WaterTiles.meshlib" type="MeshLibrary" id=13]
+[ext_resource path="res://WaterGridMap.gd" type="Script" id=14]
+[ext_resource path="res://levels/TilesGridMap.gd" type="Script" id=15]
+[ext_resource path="res://misc/Portal.tscn" type="PackedScene" id=16]
+
+[sub_resource type="NavigationMesh" id=1]
+
+[node name="World" type="Spatial"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.999789, 0.0102707, -0.0177894, 0, 0.866025, 0.5, 0.0205414, 0.499895, -0.865843, 0, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_mask = 11
+
+[node name="Pickups" type="Spatial" parent="."]
+
+[node name="CrossbowPickup" parent="Pickups" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+
+[node name="WandPickup" parent="Pickups" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3 )
+
+[node name="FireballPickup" parent="Pickups" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3 )
+
+[node name="CbowAmmoPickup" parent="Pickups" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6 )
+
+[node name="FireballAmmoPickup" parent="Pickups" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6 )
+
+[node name="WandAmmoPickup" parent="Pickups" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="HealthPickup" parent="Pickups" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
+
+[node name="WaterGridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 13 )
+collision_layer = 8
+collision_mask = 0
+data = {
+"cells": PoolIntArray(  )
+}
+script = ExtResource( 14 )
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 1 )
+
+[node name="GridMap" type="GridMap" parent="Navigation/NavigationMeshInstance"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray(  )
+}
+script = ExtResource( 15 )
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, -2 )
+}
+
+[node name="BigBrain" parent="Navigation" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0 )
+
+[node name="KoboldBomber" parent="Navigation" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
+
+[node name="Troll" parent="Navigation" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0 )
+
+[node name="Portal" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12 )
+[connection signal="update_health" from="Player" to="Player/CanvasLayer/PlayerUI/HealthAndAmmoDisplay" method="update_health"]

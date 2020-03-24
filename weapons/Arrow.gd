@@ -1,7 +1,7 @@
 extends KinematicBody
 
 export var move_speed = 2
-export var damage = 1
+export var damage = 4
 
 # sprite frame indexes
 const FORWARD = 0

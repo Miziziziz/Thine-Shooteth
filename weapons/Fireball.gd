@@ -2,6 +2,7 @@ extends KinematicBody
 
 var explosion = preload("res://weapons/Explosion.tscn")
 
+export var direct_damage = 80
 export var start_move_speed = .5
 export var grav = .2
 export var drag = 0.01
@@ -21,6 +22,7 @@ func _physics_process(delta):
 		var r = d - 2 * d.dot(n) * n
 		velocity = r * velo_retained_on_bounce
 		if collision.collider.has_method("hurt"):
+			collision.collider.hurt(direct_damage, global_transform.origin.direction_to(collision.position))
 			detonate()
 
 func detonate():

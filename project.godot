@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="4devs1artkitfps"
-run/main_scene="res://World.tscn"
+run/main_scene="res://levels/StartingLevel.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -91,6 +91,7 @@ restart={
 3d_physics/layer_1="environment"
 3d_physics/layer_2="characters"
 3d_physics/layer_3="pickups"
+3d_physics/layer_4="water"
 
 [rendering]
 

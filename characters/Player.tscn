@@ -531,24 +531,23 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 22, 44 ) ]
 }
 
-[sub_resource type="BoxShape" id=16]
+[sub_resource type="BoxShape" id=10]
 extents = Vector3( 0.211622, 0.195564, 0.617457 )
 
-[sub_resource type="CapsuleShape" id=10]
+[sub_resource type="CapsuleShape" id=11]
 radius = 0.5
 height = 0.5
 
-[sub_resource type="SphereShape" id=11]
+[sub_resource type="SphereShape" id=12]
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 41 )
 
-[sub_resource type="Theme" id=13]
-default_font = SubResource( 12 )
+[sub_resource type="Theme" id=14]
+default_font = SubResource( 13 )
 Label/fonts/ = null
 
-[sub_resource type="Animation" id=14]
-resource_name = "hurt"
+[sub_resource type="Animation" id=15]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -575,8 +574,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "start"
+[sub_resource type="Animation" id=16]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -1270,11 +1268,11 @@ collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Camera/WeaponsManager/MeleeShape"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.544695 )
-shape = SubResource( 16 )
+shape = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.8, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="PickupDetector" type="Area" parent="."]
 collision_layer = 0
@@ -1282,14 +1280,14 @@ collision_mask = 4
 script = ExtResource( 33 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PickupDetector"]
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerUI" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 13 )
+theme = SubResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1357,12 +1355,15 @@ margin_right = 122.0
 margin_bottom = 42.0
 texture = ExtResource( 37 )
 stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
 margin_left = 4.90558
-margin_top = 3.0188
+margin_top = 6.44829
 margin_right = 44.9056
-margin_bottom = 43.0188
+margin_bottom = 46.4483
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1370,9 +1371,9 @@ __meta__ = {
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
 margin_left = 2.64145
-margin_top = -0.377441
+margin_top = 3.05205
 margin_right = 42.6414
-margin_bottom = 39.6226
+margin_bottom = 43.0521
 texture = ExtResource( 36 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1380,9 +1381,9 @@ __meta__ = {
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
 margin_left = 4.90558
-margin_top = 3.0188
+margin_top = 6.44829
 margin_right = 44.9056
-margin_bottom = 43.0188
+margin_bottom = 46.4483
 texture = ExtResource( 35 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1390,9 +1391,9 @@ __meta__ = {
 
 [node name="TextureRect4" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
 margin_left = -7.54709
-margin_top = -0.754761
+margin_top = 2.67473
 margin_right = 32.4529
-margin_bottom = 39.2452
+margin_bottom = 42.6747
 texture = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1400,9 +1401,9 @@ __meta__ = {
 
 [node name="TextureRect5" type="TextureRect" parent="CanvasLayer/PlayerUI/WeaponsDisplay/Wands"]
 margin_left = -2.26414
-margin_top = -3.0188
+margin_top = 0.410689
 margin_right = 37.7359
-margin_bottom = 36.9812
+margin_bottom = 40.4107
 texture = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1485,6 +1486,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource( 45 )
 stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Crossbow" type="TextureRect" parent="CanvasLayer/PlayerUI/Crosshairs"]
 anchor_left = 0.5
@@ -1539,8 +1543,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PainOverlay"]
 autoplay = "start"
-anims/hurt = SubResource( 14 )
-anims/start = SubResource( 15 )
+anims/hurt = SubResource( 15 )
+anims/start = SubResource( 16 )
 
 [node name="HealOverlay" type="ColorRect" parent="CanvasLayer"]
 visible = false
@@ -1559,7 +1563,7 @@ anims/start = SubResource( 18 )
 [connection signal="hurt" from="." to="CanvasLayer/PainOverlay/AnimationPlayer" method="play" binds= [ "hurt" ]]
 [connection signal="update_health" from="." to="CanvasLayer/PlayerUI/HealthAndAmmoDisplay" method="_on_Player_update_health"]
 [connection signal="update_ammo" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/HealthAndAmmoDisplay" method="update_ammo"]
-[connection signal="update_weapon" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/WeaponsDisplay" method="_on_WeaponsManager_update_weapon"]
 [connection signal="update_weapon" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/Crosshairs" method="set_crosshair"]
-[connection signal="picked_up" from="PickupDetector" to="Camera/WeaponsManager" method="pickup_item"]
+[connection signal="update_weapon" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/WeaponsDisplay" method="_on_WeaponsManager_update_weapon"]
 [connection signal="picked_up" from="PickupDetector" to="." method="pickup_item"]
+[connection signal="picked_up" from="PickupDetector" to="Camera/WeaponsManager" method="pickup_item"]
