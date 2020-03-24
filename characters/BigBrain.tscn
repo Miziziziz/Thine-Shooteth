@@ -2,7 +2,7 @@
 
 [ext_resource path="res://sprites/monsters/giant_orange_brain.png" type="Texture" id=1]
 [ext_resource path="res://characters/BigBrain.gd" type="Script" id=2]
-[ext_resource path="res://pickups/CbowAmmoPickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://pickups/WandAmmoPickup.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -81,7 +81,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("CbowAmmoPickup:collision_layer")
+tracks/6/path = NodePath("WandAmmoPickup:collision_layer")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -93,7 +93,7 @@ tracks/6/keys = {
 "values": [ 4 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("CbowAmmoPickup:visible")
+tracks/7/path = NodePath("WandAmmoPickup:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -157,7 +157,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("CbowAmmoPickup:collision_layer")
+tracks/4/path = NodePath("WandAmmoPickup:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -166,10 +166,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("CbowAmmoPickup:visible")
+tracks/5/path = NodePath("WandAmmoPickup:collision_layer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -178,7 +178,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -319,8 +319,7 @@ local_coords = false
 process_material = SubResource( 9 )
 draw_pass_1 = SubResource( 10 )
 
-[node name="CbowAmmoPickup" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50018, 0 )
+[node name="WandAmmoPickup" parent="." instance=ExtResource( 3 )]
 visible = false
 collision_layer = 0
-amount = 5
+amount = 8

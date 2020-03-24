@@ -19,6 +19,10 @@ config/name="4devs1artkitfps"
 run/main_scene="res://levels/StartingLevel.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+LevelManager="*res://singletons/LevelManager.tscn"
+
 [display]
 
 window/size/width=1400

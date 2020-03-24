@@ -114,3 +114,22 @@ func hurt(damage: int, dir: Vector3):
 	cur_health -= damage
 	emit_signal("update_health", cur_health)
 	emit_signal("hurt")
+
+func _save():
+	var data = {}
+	data["cur_health"] = cur_health
+	data["cur_slot"] = weapons_manager.cur_slot
+	data["crossbow_ammo"] = weapons_manager.crossbow_ammo
+	data["wand_ammo"] = weapons_manager.wand_ammo
+	data["fireball_ammo"] = weapons_manager.fireball_ammo
+	data["slot_unlocked"] = weapons_manager.slots_unlocked
+	return data
+
+func _load(data):
+	cur_health = data["cur_health"]
+	emit_signal("update_health", cur_health)
+	weapons_manager.crossbow_ammo = data["crossbow_ammo"]
+	weapons_manager.wand_ammo = data["wand_ammo"]
+	weapons_manager.slots_unlocked = data["slot_unlocked"]
+	weapons_manager.fireball_ammo = data["fireball_ammo"]
+	weapons_manager.swap_to_weapon_slot(data["cur_slot"])
