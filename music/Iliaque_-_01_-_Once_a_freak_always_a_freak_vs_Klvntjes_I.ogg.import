@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Iliaque_-_01_-_Once_a_freak_always_a_freak_vs_Klvntjes_I.ogg-e6c4cdee705ef3d659afe3fe6ace6378.oggstr"
+
+[deps]
+
+source_file="res://music/Iliaque_-_01_-_Once_a_freak_always_a_freak_vs_Klvntjes_I.ogg"
+dest_files=[ "res://.import/Iliaque_-_01_-_Once_a_freak_always_a_freak_vs_Klvntjes_I.ogg-e6c4cdee705ef3d659afe3fe6ace6378.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

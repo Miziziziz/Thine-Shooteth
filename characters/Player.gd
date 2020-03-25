@@ -24,6 +24,8 @@ var lean_rate_in = 15.0
 const MAX_HEALTH = 100
 var cur_health = MAX_HEALTH
 
+var dead = false
+
 var hotkeys = {
 	KEY_1: 0,
 	KEY_2: 1,
@@ -57,17 +59,20 @@ func _input(event):
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 
 func _process(delta):
-	if Input.is_action_pressed("exit"):
+	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
-	if Input.is_action_pressed("restart"):
-		get_tree().call_group("instanced", "queue_free")
-		get_tree().reload_current_scene()
-		
+	if Input.is_action_just_pressed("restart"):
+		LevelManager.restart_level()
+	
+	if dead:
+		return
 	var attack_input_just_pressed = Input.is_action_just_pressed("shoot")
 	var attack_input_held = Input.is_action_pressed("shoot")
 	weapons_manager.attack(attack_input_just_pressed, attack_input_held)
 
 func _physics_process(delta):
+	if dead:
+		return
 	var move_vec = Vector3()
 	if Input.is_action_pressed("move_forwards"):
 		move_vec += Vector3.FORWARD
@@ -106,12 +111,21 @@ func pickup_item(type:String, amount:int):
 	if type == "health":
 		cur_health += amount
 		emit_signal("heal")
-		if cur_health >= MAX_HEALTH:
-			cur_health = MAX_HEALTH
+		#if cur_health >= MAX_HEALTH:
+		#	cur_health = MAX_HEALTH
 	emit_signal("update_health", cur_health)
 
 func hurt(damage: int, dir: Vector3):
+	if dead:
+		return
 	cur_health -= damage
+	if cur_health <= 0:
+		dead = true
+		$CanvasLayer/PlayerUI/RestartMessage.show()
+		$DyingSound.play()
+		cur_health = 0
+	else:
+		$HurtSound.play()
 	emit_signal("update_health", cur_health)
 	emit_signal("hurt")
 
@@ -122,10 +136,11 @@ func _save():
 	data["crossbow_ammo"] = weapons_manager.crossbow_ammo
 	data["wand_ammo"] = weapons_manager.wand_ammo
 	data["fireball_ammo"] = weapons_manager.fireball_ammo
-	data["slot_unlocked"] = weapons_manager.slots_unlocked
+	data["slot_unlocked"] = weapons_manager.slots_unlocked.duplicate(true)
 	return data
 
-func _load(data):
+func _load(data: Dictionary):
+	data = data.duplicate(true)
 	cur_health = data["cur_health"]
 	emit_signal("update_health", cur_health)
 	weapons_manager.crossbow_ammo = data["crossbow_ammo"]
@@ -133,3 +148,4 @@ func _load(data):
 	weapons_manager.slots_unlocked = data["slot_unlocked"]
 	weapons_manager.fireball_ammo = data["fireball_ammo"]
 	weapons_manager.swap_to_weapon_slot(data["cur_slot"])
+	weapons_manager.update_display()

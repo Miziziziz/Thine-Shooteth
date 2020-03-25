@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Fire_Spell_Dragon_Trap_03.wav-86919b1701e268896b5d397524bc3028.sample"
+
+[deps]
+
+source_file="res://weapons/sfx/Fire_Spell_Dragon_Trap_03.wav"
+dest_files=[ "res://.import/Fire_Spell_Dragon_Trap_03.wav-86919b1701e268896b5d397524bc3028.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

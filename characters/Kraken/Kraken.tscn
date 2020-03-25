@@ -1,22 +1,27 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://characters/Kraken/Kraken.gd" type="Script" id=1]
 [ext_resource path="res://characters/Kraken/Head.gd" type="Script" id=2]
 [ext_resource path="res://ui/KLEINTEN.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://characters/sfx/Monster_Alien_Growl_Pained2.wav" type="AudioStream" id=4]
+[ext_resource path="res://characters/sfx/Monster_Alien_Roar_Aggressive1.wav" type="AudioStream" id=5]
+[ext_resource path="res://characters/sfx/Monster_Alien_Roar_Aggressive2.wav" type="AudioStream" id=6]
+[ext_resource path="res://characters/sfx/Monster_Alien_Growl_Pained1.wav" type="AudioStream" id=7]
 [ext_resource path="res://sprites/monsters/kraken_head_old.png" type="Texture" id=8]
 [ext_resource path="res://sprites/monsters/kraken_head_new.png" type="Texture" id=9]
+[ext_resource path="res://characters/sfx/Monster_Alien_Growl_Pained3.wav" type="AudioStream" id=10]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.23732
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.537255, 0, 0, 1 )
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0, 0, 0, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -32,12 +37,11 @@ expand_margin_right = 5.0
 expand_margin_top = 5.0
 expand_margin_bottom = 5.0
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=15]
 size = 20
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "attack"
+[sub_resource type="Animation" id=16]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head/HeadMouthClosed:visible")
@@ -64,8 +68,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "idle"
+[sub_resource type="Animation" id=17]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head/HeadMouthOpen:visible")
 tracks/0/interp = 1
@@ -91,8 +94,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "hurt"
+[sub_resource type="Animation" id=18]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head/HeadMouthOpen:modulate")
@@ -119,8 +121,7 @@ tracks/1/keys = {
 "values": [ Color( 0.878431, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "start"
+[sub_resource type="Animation" id=19]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head/HeadMouthOpen:modulate")
@@ -147,8 +148,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "descend"
+[sub_resource type="Animation" id=20]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:translation")
@@ -187,8 +187,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, -3, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "raiseextra"
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Graphics2:translation")
 tracks/0/interp = 1
@@ -202,8 +201,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, -3, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "riseup"
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:translation")
 tracks/0/interp = 1
@@ -229,8 +227,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, -3, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "underwater"
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head:translation")
 tracks/0/interp = 1
@@ -271,6 +268,7 @@ tracks/2/keys = {
 [node name="Kraken" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 3 )
 script = ExtResource( 1 )
+health = 2000
 
 [node name="Head" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0 )
@@ -297,7 +295,7 @@ texture = ExtResource( 9 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.724054, -2 )
 
 [node name="FireballAttackPoint" type="Spatial" parent="Head"]
-transform = Transform( 1, 0, 0, 0, 0.998986, -0.0450143, 0, 0.0450143, 0.998986, 0, 0.724054, -2 )
+transform = Transform( 1, 0, 0, 0, 0.990072, -0.140556, 0, 0.140556, 0.990072, 0, 0.724054, -2 )
 
 [node name="Graphics" type="Spatial" parent="."]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -3, 0 )
@@ -308,14 +306,15 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -3, 0 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -298.0
 margin_top = 22.0
 margin_right = 299.0
 margin_bottom = 54.0
-custom_styles/fg = SubResource( 11 )
-custom_styles/bg = SubResource( 12 )
+custom_styles/fg = SubResource( 13 )
+custom_styles/bg = SubResource( 14 )
 value = 98.42
 percent_visible = false
 __meta__ = {
@@ -331,22 +330,47 @@ margin_left = -27.0
 margin_top = -9.0
 margin_right = 27.0
 margin_bottom = 9.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 15 )
 text = "Kraken"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 4 )
-anims/idle = SubResource( 5 )
+anims/attack = SubResource( 16 )
+anims/idle = SubResource( 17 )
 
 [node name="HurtAnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "start"
-anims/hurt = SubResource( 2 )
-anims/start = SubResource( 3 )
+anims/hurt = SubResource( 18 )
+anims/start = SubResource( 19 )
 
 [node name="StateAnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "underwater"
-anims/descend = SubResource( 6 )
-anims/raiseextra = SubResource( 7 )
-anims/riseup = SubResource( 8 )
-anims/underwater = SubResource( 9 )
+anims/descend = SubResource( 20 )
+anims/raiseextra = SubResource( 10 )
+anims/riseup = SubResource( 11 )
+anims/underwater = SubResource( 12 )
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 10 )
+unit_size = 51.8
+bus = "sfx"
+
+[node name="AwakeSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
+unit_size = 51.8
+bus = "sfx"
+
+[node name="AttackSound1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_size = 51.8
+bus = "sfx"
+
+[node name="AttackSound2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 6 )
+unit_size = 51.8
+bus = "sfx"
+
+[node name="BerserkSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+unit_size = 51.8
+bus = "sfx"
 [connection signal="update_health_percent" from="." to="CanvasLayer/ProgressBar" method="set_value"]

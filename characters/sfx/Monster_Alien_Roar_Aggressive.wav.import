@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Monster_Alien_Roar_Aggressive.wav-6585e9beb061c315d75abb1203aabda7.sample"
+
+[deps]
+
+source_file="res://characters/sfx/Monster_Alien_Roar_Aggressive.wav"
+dest_files=[ "res://.import/Monster_Alien_Roar_Aggressive.wav-6585e9beb061c315d75abb1203aabda7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

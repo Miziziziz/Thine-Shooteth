@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/KLEINTEN.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://levels/ThanksForPlaying.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[node name="ThanksForPlaying" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -561.427
+margin_top = -235.165
+margin_right = -279.427
+margin_bottom = -112.165
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 1 )
+text = "Thanks for playing
+
+created by miziziziz
+with music by XTAKERU and Iliaque
+
+press Esc to close"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

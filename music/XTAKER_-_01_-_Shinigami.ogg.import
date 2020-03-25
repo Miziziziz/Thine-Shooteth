@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/XTAKER_-_01_-_Shinigami.ogg-6d7567a74119c7f3f29688d2d773abe3.oggstr"
+
+[deps]
+
+source_file="res://music/XTAKER_-_01_-_Shinigami.ogg"
+dest_files=[ "res://.import/XTAKER_-_01_-_Shinigami.ogg-6d7567a74119c7f3f29688d2d773abe3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/creature_monster_03.wav-7bdffc8567c42c9fd217dd2929ecaba7.sample"
+
+[deps]
+
+source_file="res://characters/sfx/creature_monster_03.wav"
+dest_files=[ "res://.import/creature_monster_03.wav-7bdffc8567c42c9fd217dd2929ecaba7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

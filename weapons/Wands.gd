@@ -20,6 +20,7 @@ func fire(attack_input_just_pressed, attack_input_held, attack_point):
 	if attack_input_held and get_time() > last_attack_time + fire_rate:
 		for flash in flashes:
 			flash.hide()
+		$AttackSound.play()
 		var flash_ind = randi() % flashes.size()
 		flashes[flash_ind].show()
 		$AnimationPlayer.play("fire")

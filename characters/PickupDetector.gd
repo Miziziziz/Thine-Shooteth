@@ -11,10 +11,11 @@ func body_entered(coll):
 		var delete_pickup = true
 		match coll.pickup_type:
 			coll.PICKUP_TYPES.HEALTH:
-				if get_parent().cur_health == get_parent().MAX_HEALTH:
-					delete_pickup = false
-				else:
-					emit_signal("picked_up", "health", coll.amount)
+				#if get_parent().cur_health == get_parent().MAX_HEALTH:
+				#	delete_pickup = false
+				#else:
+				emit_signal("picked_up", "health", coll.amount)
+				$HealthPickupSound.play()
 			coll.PICKUP_TYPES.CROSSBOW:
 				emit_signal("picked_up", "crossbow", coll.amount)
 			coll.PICKUP_TYPES.WAND: 
@@ -23,9 +24,12 @@ func body_entered(coll):
 				emit_signal("picked_up", "fireball", coll.amount)
 			coll.PICKUP_TYPES.CROSSBOW_AMMO: 
 				emit_signal("picked_up", "crossbow_ammo", coll.amount)
+				$CrossbowAmmoPickupSound.play()
 			coll.PICKUP_TYPES.WAND_AMMO:
 				emit_signal("picked_up", "wand_ammo", coll.amount)
+				$WandAmmoPickupSound.play()
 			coll.PICKUP_TYPES.FIREBALL_AMMO:
 				emit_signal("picked_up", "fireball_ammo", coll.amount)
+				$FireballAmmoPickupSound.play()
 		if delete_pickup:
 			coll.queue_free()

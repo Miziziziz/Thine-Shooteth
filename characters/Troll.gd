@@ -19,6 +19,7 @@ func set_state_idle():
 	$AnimationPlayer.play("idle")
 
 func set_state_chase():
+	$SpottedSound.play()
 	cur_state = STATES.CHASING
 	$AnimationPlayer.play("run")
 
@@ -87,6 +88,7 @@ func finish_attack():
 		return
 	if global_transform.origin.distance_squared_to(player.global_transform.origin) < attack_range*attack_range:
 		player.hurt(damage, global_transform.origin.direction_to(player.global_transform.origin))
+		$AttackSound.play()
 	#set_state_chase()
 
 func hurt(damage: int, dir = Vector3.UP):
@@ -94,6 +96,8 @@ func hurt(damage: int, dir = Vector3.UP):
 		return
 	health -= damage
 	$HurtAnimationPlayer.play("hurt")
+	$HurtSound.play()
 	if health <= 0:
 		set_state_dead()
+		$DeathSound.play()
 		$BloodParticles.emitting=true

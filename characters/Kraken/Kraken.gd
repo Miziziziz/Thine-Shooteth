@@ -21,14 +21,14 @@ var magic_missile_attack_count = 12
 
 var magic_attack_rate = 0.2
 var fireball_attack_rate = 0.4
-var rest_time = 1.0
+var rest_time = 3.0
 
 var berserk_fireball_attack_count = 8
 var berserk_magic_missile_attack_count = 25
 
 var berserk_magic_attack_rate = 0.1
 var berserk_fireball_attack_rate = 0.2
-var berserk_rest_time = 1.0
+var berserk_rest_time = 2.0
 
 var cur_time = 0.0
 
@@ -61,6 +61,8 @@ func set_state_attack():
 	#choose_rand_attack_type()
 	cur_attack_type = ATTACK_TYPES.MAGIC_MISSILE
 	$StateAnimationPlayer.play("riseup")
+	$BerserkSound.play()
+	$CanvasLayer/ProgressBar.show()
 
 func set_state_dead():
 	cur_state = STATES.DEAD
@@ -71,6 +73,7 @@ func set_state_dead():
 func process_state_idle(delta: float):
 	pass
 
+var played_sound = false
 func process_state_attack(delta: float):
 	var offset = player.global_transform.origin - global_transform.origin
 	var scatter = sin(2.0 * OS.get_ticks_msec()/1000.0) * PI/8
@@ -109,15 +112,26 @@ func process_state_attack(delta: float):
 		var cur_time_to_rest = rest_time
 		if is_berserk():
 			cur_time_to_rest = berserk_rest_time
+		if cur_time_to_rest - cur_time < 1.0 and !played_sound:
+			played_sound = true
+			play_rand_attack_sound()
 		if cur_time >= cur_time_to_rest:
 			cur_time = 0.0
+			played_sound = false
 			choose_rand_attack_type()
 
 func process_state_dead(delta: float):
 	pass
 
-func choose_rand_attack_type():
+func play_rand_attack_sound():
 	if randi() % 2 == 0:
+		$AttackSound1.play()
+	else:
+		$AttackSound2.play()
+
+func choose_rand_attack_type():
+	if !is_berserk():
+	#if randi() % 2 == 0:
 		cur_attack_type = ATTACK_TYPES.MAGIC_MISSILE
 	else:
 		cur_attack_type = ATTACK_TYPES.FIREBALL
@@ -145,11 +159,13 @@ func hurt(damage: int, dir: Vector3):
 	var was_berserk = is_berserk()
 	health -= damage
 	if !was_berserk and is_berserk():
+		$BerserkSound.play()
 		$StateAnimationPlayer.play("raiseextra")
 	emit_signal("update_health_percent", 100 * health / start_health)
 	$HurtAnimationPlayer.play("hurt")
 	if health <= 0:
 		set_state_dead()
+		$DeathSound.play()
 
 func is_berserk():
 	return health / start_health < 0.5

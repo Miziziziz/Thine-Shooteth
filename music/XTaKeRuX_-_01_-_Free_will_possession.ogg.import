@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/XTaKeRuX_-_01_-_Free_will_possession.ogg-dc7e932cd95cb0ec31a52294645a9083.oggstr"
+
+[deps]
+
+source_file="res://music/XTaKeRuX_-_01_-_Free_will_possession.ogg"
+dest_files=[ "res://.import/XTaKeRuX_-_01_-_Free_will_possession.ogg-dc7e932cd95cb0ec31a52294645a9083.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

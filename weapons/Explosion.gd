@@ -3,6 +3,7 @@ extends Area
 export var damage = 40
 
 func _ready():
+	$AudioStreamPlayer3D.play()
 	# have to wait a couple frames for the area to see everything inside
 	yield(get_tree(),"physics_frame")
 	yield(get_tree(),"physics_frame")

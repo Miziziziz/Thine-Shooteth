@@ -23,8 +23,20 @@ func attack():
 	var space_state = attack_point.get_world().get_direct_space_state()
 	var pos = attack_point.global_transform.origin
 	
+	var hit_something = false
+	var hit_wall = false
 	for body in melee_area.get_overlapping_bodies():
 		if body.has_method("hurt"):
 			body.hurt(damage, -attack_point.global_transform.basis.z)
+			hit_something = true
+		else:
+			hit_wall = true
+	
+	if hit_something:
+		$AttackHitSound.play()
+	elif hit_wall:
+		$AttackHitWallSound.play()
+	else:
+		$AttackMissSound.play()
 		 
 	

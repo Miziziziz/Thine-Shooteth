@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/XTaKeRuX_-_03_-_White_Crow.ogg-392591d97217c4cb0136032f18fb9b87.oggstr"
+
+[deps]
+
+source_file="res://music/XTaKeRuX_-_03_-_White_Crow.ogg"
+dest_files=[ "res://.import/XTaKeRuX_-_03_-_White_Crow.ogg-392591d97217c4cb0136032f18fb9b87.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

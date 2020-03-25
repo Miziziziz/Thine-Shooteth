@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bullet_hit_car.wav-c93b5cea1d4e3d89556afc9373d4b5ee.sample"
+
+[deps]
+
+source_file="res://weapons/sfx/Bullet_hit_car.wav"
+dest_files=[ "res://.import/Bullet_hit_car.wav-c93b5cea1d4e3d89556afc9373d4b5ee.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/KLEINTEN.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://misc/DisplayInstructionsOnPlayerEnter.gd" type="Script" id=2]
+
+[sub_resource type="SphereShape" id=1]
+radius = 4.0
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[node name="DisplayInstructionsOnPlayerEnter" type="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -17 )
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -404.292
+margin_top = 20.0422
+margin_right = -190.292
+margin_bottom = 38.0422
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 2 )
+text = "Use WASD keys to move"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

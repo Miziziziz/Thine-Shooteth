@@ -21,6 +21,7 @@ func set_state_idle():
 func set_state_attack():
 	cur_state = STATES.ATTACKING
 	$AnimationPlayer.play("run")
+	$SpottedSound.play()
 
 func set_state_dead():
 	cur_state = STATES.DEAD
@@ -91,5 +92,6 @@ func hurt(damage: int, dir = Vector3.UP):
 		return
 	health -= damage
 	$Graphics/HurtAnimationPlayer.play("hurt")
+	$HurtSound.play()
 	if health <= 0:
 		explode()

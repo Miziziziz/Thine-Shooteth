@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/death_sound.wav-9a01f7de27eef3a6dd9ef630c50b2549.sample"
+
+[deps]
+
+source_file="res://characters/sfx/death_sound.wav"
+dest_files=[ "res://.import/death_sound.wav-9a01f7de27eef3a6dd9ef630c50b2549.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

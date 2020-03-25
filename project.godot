@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 LevelManager="*res://singletons/LevelManager.tscn"
+MusicManager="*res://singletons/MusicManager.tscn"
 
 [display]
 
@@ -99,4 +100,5 @@ restart={
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

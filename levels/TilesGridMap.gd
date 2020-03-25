@@ -14,3 +14,4 @@ func _ready():
 			for i in range(wall_height):
 				set_cell_item(x, y + i + 1, z, cell_type)
 
+

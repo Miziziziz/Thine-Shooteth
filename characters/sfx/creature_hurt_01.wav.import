@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/creature_hurt_01.wav-f5bb091ea85d75092a2a0ca7c2c8e618.sample"
+
+[deps]
+
+source_file="res://characters/sfx/creature_hurt_01.wav"
+dest_files=[ "res://.import/creature_hurt_01.wav-f5bb091ea85d75092a2a0ca7c2c8e618.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

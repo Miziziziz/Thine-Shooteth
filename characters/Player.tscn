@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://characters/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/WeaponsManager.gd" type="Script" id=2]
@@ -46,6 +46,24 @@
 [ext_resource path="res://ui/crosshairs/drain_red_2.png" type="Texture" id=44]
 [ext_resource path="res://ui/crosshairs/icicle_5.png" type="Texture" id=45]
 [ext_resource path="res://ui/crosshairs/alarm.png" type="Texture" id=46]
+[ext_resource path="res://weapons/sfx/Gun+Reload.wav" type="AudioStream" id=47]
+[ext_resource path="res://weapons/sfx/232130__werra__vintage-camera-flash-powder-and-shutter.wav" type="AudioStream" id=48]
+[ext_resource path="res://weapons/sfx/PM_BB_DESIGNED_CINEMATIC_CHOPS_19.wav" type="AudioStream" id=49]
+[ext_resource path="res://weapons/sfx/Melee_Sword_Attack_04.wav" type="AudioStream" id=50]
+[ext_resource path="res://weapons/sfx/swish_4.wav" type="AudioStream" id=51]
+[ext_resource path="res://weapons/sfx/weaponclick.wav" type="AudioStream" id=52]
+[ext_resource path="res://weapons/sfx/spell_fire_01.wav" type="AudioStream" id=53]
+[ext_resource path="res://weapons/sfx/spell_fire_07.wav" type="AudioStream" id=54]
+[ext_resource path="res://weapons/sfx/Fire_Spell_Dragon_Trap_03.wav" type="AudioStream" id=55]
+[ext_resource path="res://weapons/sfx/spell_02.wav" type="AudioStream" id=56]
+[ext_resource path="res://weapons/sfx/Ice_Spell_Ice_Spell_Buff_Positive_02.wav" type="AudioStream" id=57]
+[ext_resource path="res://weapons/sfx/Dark_Spell_Life_Tap_03.wav" type="AudioStream" id=58]
+[ext_resource path="res://characters/sfx/death_sound.wav" type="AudioStream" id=59]
+[ext_resource path="res://characters/sfx/EMOTE Joshua, Man, Pain Hurt Grunt Big 03.wav" type="AudioStream" id=60]
+[ext_resource path="res://characters/PickedUpInfo.gd" type="Script" id=61]
+[ext_resource path="res://characters/sfx/heal.wav" type="AudioStream" id=62]
+[ext_resource path="res://weapons/sfx/ammo_pickup.wav" type="AudioStream" id=63]
+[ext_resource path="res://weapons/sfx/spell_01.wav" type="AudioStream" id=64]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -356,6 +374,30 @@ tracks/10/keys = {
 "method": "play"
 } ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("AttackSound:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("ReloadSound:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "fire"
@@ -531,23 +573,23 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 22, 44 ) ]
 }
 
-[sub_resource type="BoxShape" id=10]
+[sub_resource type="BoxShape" id=19]
 extents = Vector3( 0.211622, 0.195564, 0.617457 )
 
-[sub_resource type="CapsuleShape" id=11]
+[sub_resource type="CapsuleShape" id=20]
 radius = 0.5
 height = 0.5
 
-[sub_resource type="SphereShape" id=12]
+[sub_resource type="SphereShape" id=21]
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=22]
 font_data = ExtResource( 41 )
 
-[sub_resource type="Theme" id=14]
-default_font = SubResource( 13 )
+[sub_resource type="Theme" id=23]
+default_font = SubResource( 22 )
 Label/fonts/ = null
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=24]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -684,6 +726,18 @@ autoplay = "idle"
 anims/attack = SubResource( 1 )
 anims/idle = SubResource( 2 )
 
+[node name="AttackHitSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/Mace"]
+stream = ExtResource( 49 )
+bus = "sfx"
+
+[node name="AttackHitWallSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/Mace"]
+stream = ExtResource( 50 )
+bus = "sfx"
+
+[node name="AttackMissSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/Mace"]
+stream = ExtResource( 51 )
+bus = "sfx"
+
 [node name="Crossbow" type="Control" parent="Camera/WeaponsManager/Weapons"]
 visible = false
 anchor_left = 1.0
@@ -696,7 +750,6 @@ __meta__ = {
 }
 
 [node name="Smoke" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow"]
-visible = false
 margin_left = -754.439
 margin_top = -657.525
 margin_right = -154.438
@@ -720,6 +773,7 @@ __meta__ = {
 }
 
 [node name="Bolts" type="Control" parent="Camera/WeaponsManager/Weapons/Crossbow/CrossbowGraphic"]
+visible = false
 margin_left = 255.0
 margin_top = 213.206
 margin_right = 295.0
@@ -817,11 +871,11 @@ __meta__ = {
 
 [node name="Hand" type="TextureRect" parent="Camera/WeaponsManager/Weapons/Crossbow"]
 visible = false
-margin_left = -611.058
-margin_top = -463.113
-margin_right = -11.0573
-margin_bottom = 136.887
-rect_rotation = 49.664
+margin_left = -883.132
+margin_top = -563.414
+margin_right = -283.131
+margin_bottom = 36.586
+rect_rotation = 27.462
 texture = ExtResource( 19 )
 stretch_mode = 1
 __meta__ = {
@@ -829,7 +883,6 @@ __meta__ = {
 }
 
 [node name="Bolts" type="Control" parent="Camera/WeaponsManager/Weapons/Crossbow/Hand"]
-visible = false
 margin_left = 147.254
 margin_top = 386.856
 margin_right = 187.254
@@ -882,6 +935,22 @@ __meta__ = {
 autoplay = "idle"
 anims/idle = SubResource( 3 )
 anims/shoot = SubResource( 4 )
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/Crossbow"]
+stream = ExtResource( 48 )
+bus = "sfx"
+
+[node name="ReloadSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/Crossbow"]
+stream = ExtResource( 47 )
+bus = "sfx"
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/Crossbow"]
+stream = ExtResource( 47 )
+bus = "sfx"
+
+[node name="OutOfAmmoSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/Crossbow"]
+stream = ExtResource( 52 )
+bus = "sfx"
 
 [node name="Wands" type="Control" parent="Camera/WeaponsManager/Weapons"]
 anchor_left = 1.0
@@ -1184,6 +1253,18 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager/Weapons/Wands"]
 anims/fire = SubResource( 5 )
 
+[node name="AttackSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/Wands"]
+stream = ExtResource( 57 )
+bus = "sfx"
+
+[node name="OutOfAmmoSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/Wands"]
+stream = ExtResource( 56 )
+bus = "sfx"
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/Wands"]
+stream = ExtResource( 58 )
+bus = "sfx"
+
 [node name="FireballStaff" type="Control" parent="Camera/WeaponsManager/Weapons"]
 visible = false
 anchor_left = 1.0
@@ -1257,6 +1338,18 @@ autoplay = "idle"
 anims/idle = SubResource( 6 )
 anims/shoot = SubResource( 7 )
 
+[node name="AttackSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/FireballStaff"]
+stream = ExtResource( 55 )
+bus = "sfx"
+
+[node name="OutOfAmmoSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/FireballStaff"]
+stream = ExtResource( 53 )
+bus = "sfx"
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="Camera/WeaponsManager/Weapons/FireballStaff"]
+stream = ExtResource( 54 )
+bus = "sfx"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponsManager"]
 autoplay = "idle"
 anims/idle = SubResource( 8 )
@@ -1264,15 +1357,15 @@ anims/walk = SubResource( 9 )
 
 [node name="MeleeShape" type="Area" parent="Camera/WeaponsManager"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="Camera/WeaponsManager/MeleeShape"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.544695 )
-shape = SubResource( 10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.861755 )
+shape = SubResource( 19 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.8, 0 )
-shape = SubResource( 11 )
+shape = SubResource( 20 )
 
 [node name="PickupDetector" type="Area" parent="."]
 collision_layer = 0
@@ -1280,14 +1373,30 @@ collision_mask = 4
 script = ExtResource( 33 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PickupDetector"]
-shape = SubResource( 12 )
+shape = SubResource( 21 )
+
+[node name="WandAmmoPickupSound" type="AudioStreamPlayer" parent="PickupDetector"]
+stream = ExtResource( 64 )
+bus = "sfx"
+
+[node name="CrossbowAmmoPickupSound" type="AudioStreamPlayer" parent="PickupDetector"]
+stream = ExtResource( 63 )
+bus = "sfx"
+
+[node name="FireballAmmoPickupSound" type="AudioStreamPlayer" parent="PickupDetector"]
+stream = ExtResource( 54 )
+bus = "sfx"
+
+[node name="HealthPickupSound" type="AudioStreamPlayer" parent="PickupDetector"]
+stream = ExtResource( 62 )
+bus = "sfx"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerUI" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 14 )
+theme = SubResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1532,6 +1641,46 @@ grow_vertical = 2
 texture = ExtResource( 46 )
 stretch_mode = 1
 
+[node name="RestartMessage" type="Label" parent="CanvasLayer/PlayerUI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -302.826
+margin_top = -85.5978
+margin_right = -164.826
+margin_bottom = -65.5978
+rect_scale = Vector2( 4, 4 )
+text = "Press R to restart"
+valign = 1
+
+[node name="Panel" type="TextureRect" parent="CanvasLayer/PlayerUI/RestartMessage"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = -1.38504
+margin_right = 5.0
+margin_bottom = 8.61496
+texture = ExtResource( 40 )
+stretch_mode = 2
+
+[node name="PickedUpInfo" type="Label" parent="CanvasLayer/PlayerUI"]
+margin_left = 12.3066
+margin_top = 10.5485
+margin_right = 52.3066
+margin_bottom = 30.5485
+rect_scale = Vector2( 4, 4 )
+uppercase = true
+script = ExtResource( 61 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="CanvasLayer/PlayerUI/PickedUpInfo"]
+wait_time = 3.0
+
 [node name="PainOverlay" type="ColorRect" parent="CanvasLayer"]
 visible = false
 anchor_right = 1.0
@@ -1543,7 +1692,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PainOverlay"]
 autoplay = "start"
-anims/hurt = SubResource( 15 )
+anims/hurt = SubResource( 24 )
 anims/start = SubResource( 16 )
 
 [node name="HealOverlay" type="ColorRect" parent="CanvasLayer"]
@@ -1559,11 +1708,21 @@ __meta__ = {
 autoplay = "start"
 anims/heal = SubResource( 17 )
 anims/start = SubResource( 18 )
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 60 )
+bus = "sfx"
+
+[node name="DyingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 59 )
+bus = "sfx"
 [connection signal="heal" from="." to="CanvasLayer/HealOverlay/AnimationPlayer" method="play" binds= [ "heal" ]]
 [connection signal="hurt" from="." to="CanvasLayer/PainOverlay/AnimationPlayer" method="play" binds= [ "hurt" ]]
 [connection signal="update_health" from="." to="CanvasLayer/PlayerUI/HealthAndAmmoDisplay" method="_on_Player_update_health"]
 [connection signal="update_ammo" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/HealthAndAmmoDisplay" method="update_ammo"]
 [connection signal="update_weapon" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/Crosshairs" method="set_crosshair"]
 [connection signal="update_weapon" from="Camera/WeaponsManager" to="CanvasLayer/PlayerUI/WeaponsDisplay" method="_on_WeaponsManager_update_weapon"]
-[connection signal="picked_up" from="PickupDetector" to="." method="pickup_item"]
 [connection signal="picked_up" from="PickupDetector" to="Camera/WeaponsManager" method="pickup_item"]
+[connection signal="picked_up" from="PickupDetector" to="CanvasLayer/PlayerUI/PickedUpInfo" method="add_item_to_display"]
+[connection signal="picked_up" from="PickupDetector" to="." method="pickup_item"]
+[connection signal="timeout" from="CanvasLayer/PlayerUI/PickedUpInfo/Timer" to="CanvasLayer/PlayerUI/PickedUpInfo" method="remove_item_from_display"]

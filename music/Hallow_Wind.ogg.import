@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Hallow_Wind.ogg-a0fbcae84496452345ada2139a080eac.oggstr"
+
+[deps]
+
+source_file="res://music/Hallow_Wind.ogg"
+dest_files=[ "res://.import/Hallow_Wind.ogg-a0fbcae84496452345ada2139a080eac.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

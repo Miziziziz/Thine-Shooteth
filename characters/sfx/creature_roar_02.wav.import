@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/creature_roar_02.wav-00011756007f8567f903c70ce108b8c6.sample"
+
+[deps]
+
+source_file="res://characters/sfx/creature_roar_02.wav"
+dest_files=[ "res://.import/creature_roar_02.wav-00011756007f8567f903c70ce108b8c6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

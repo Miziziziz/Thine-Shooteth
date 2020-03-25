@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://sprites/projectiles/cloud_fire1.png" type="Texture" id=1]
 [ext_resource path="res://weapons/Explosion.gd" type="Script" id=2]
+[ext_resource path="res://weapons/sfx/Explosion_Impact.wav" type="AudioStream" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
@@ -60,4 +61,9 @@ shape = SubResource( 6 )
 wait_time = 2.428
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_size = 13.0
+bus = "sfx"
 [connection signal="timeout" from="Timer" to="." method="queue_free"]

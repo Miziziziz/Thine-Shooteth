@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/XTAKERU_-_02_-_Beast_but_not_least.ogg-581d12da822b9ab6c11c90b1eaefaead.oggstr"
+
+[deps]
+
+source_file="res://music/XTAKERU_-_02_-_Beast_but_not_least.ogg"
+dest_files=[ "res://.import/XTAKERU_-_02_-_Beast_but_not_least.ogg-581d12da822b9ab6c11c90b1eaefaead.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -28,6 +28,7 @@ func set_state_dead():
 	$AnimationPlayer.play("death")
 	$AttackAnimationPlayer.stop()
 	$CollisionShape.disabled = true
+	$DeathSound.play()
 
 func process_state_idle(delta):
 	if has_line_of_sight_to_player():
@@ -61,6 +62,7 @@ func fire():
 	var dir = pos.direction_to(get_player_pos())
 	magic_missile_inst.global_transform.origin = pos + dir
 	magic_missile_inst.global_transform.basis.z = -dir
+	$AttackSound.play()
 
 func _physics_process(delta):
 	if cur_state != STATES.ATTACKING:
@@ -91,6 +93,7 @@ func hurt(damage: int, dir = Vector3.UP):
 		return
 	health -= damage
 	$AttackAnimationPlayer.play("hurt")
+	$HurtSound.play()
 	#time_since_fired = 0.0
 	if health <= 0:
 		set_state_dead()

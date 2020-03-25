@@ -24,12 +24,18 @@ func attack(attack_input_just_pressed, attack_input_held):
 		match cur_slot:
 			WEAPON_SLOT_IDS.CROSSBOW_SLOT:
 				if crossbow_ammo <= 0:
+					if attack_input_just_pressed:
+						$Weapons/Crossbow/OutOfAmmoSound.play()
 					return
 			WEAPON_SLOT_IDS.WAND_SLOT:
 				if wand_ammo <= 0:
+					if attack_input_just_pressed:
+						$Weapons/Wands/OutOfAmmoSound.play()
 					return
 			WEAPON_SLOT_IDS.FIREBALL_SLOT:
 				if fireball_ammo <= 0:
+					if attack_input_just_pressed:
+						$Weapons/FireballStaff/OutOfAmmoSound.play()
 					return
 		var ammo_used = cur_weapon.fire(attack_input_just_pressed, attack_input_held, self)
 		if ammo_used and ammo_used <= 0:
@@ -92,14 +98,17 @@ signal update_ammo
 signal update_weapon
 func pickup_item(type:String, amount:int):
 	if type == "crossbow":
+		$Weapons/Crossbow/PickupSound.play()
 		slots_unlocked[WEAPON_SLOT_IDS.CROSSBOW_SLOT] = ''
 		crossbow_ammo += amount
 		swap_to_weapon_slot(WEAPON_SLOT_IDS.CROSSBOW_SLOT)
 	elif type == "wand":
+		$Weapons/Wands/PickupSound.play()
 		slots_unlocked[WEAPON_SLOT_IDS.WAND_SLOT] = ''
 		wand_ammo += amount
 		swap_to_weapon_slot(WEAPON_SLOT_IDS.WAND_SLOT)
 	elif type == "fireball":
+		$Weapons/FireballStaff/PickupSound.play()
 		slots_unlocked[WEAPON_SLOT_IDS.FIREBALL_SLOT] = ''
 		fireball_ammo += amount
 		swap_to_weapon_slot(WEAPON_SLOT_IDS.FIREBALL_SLOT)
@@ -115,3 +124,9 @@ func pickup_item(type:String, amount:int):
 		fireball_ammo += amount
 		if cur_slot == WEAPON_SLOT_IDS.FIREBALL_SLOT:
 			emit_signal("update_ammo", fireball_ammo)
+
+func update_display():
+	var tmp = cur_slot
+	for slot in slots_unlocked:
+		swap_to_weapon_slot(slot)
+	swap_to_weapon_slot(tmp)

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/swish_4.wav-43f4edcc9935941497849c90e97dc2e5.sample"
+
+[deps]
+
+source_file="res://weapons/sfx/swish_4.wav"
+dest_files=[ "res://.import/swish_4.wav-43f4edcc9935941497849c90e97dc2e5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

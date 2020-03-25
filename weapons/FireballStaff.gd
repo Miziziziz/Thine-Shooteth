@@ -12,6 +12,7 @@ func set_active():
 
 func fire(attack_input_just_pressed, attack_input_held, attack_point):
 	if attack_input_just_pressed and anim.current_animation == "idle":
+		$AttackSound.play()
 		anim.play("shoot")
 		var fireball_inst = fireball_obj.instance()
 		get_tree().get_root().add_child(fireball_inst)

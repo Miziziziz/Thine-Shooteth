@@ -1,9 +1,13 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://sprites/monsters/troll_arm_r.png" type="Texture" id=1]
 [ext_resource path="res://sprites/monsters/troll_arm_l.png" type="Texture" id=2]
 [ext_resource path="res://sprites/monsters/troll_body.png" type="Texture" id=3]
 [ext_resource path="res://characters/Troll.gd" type="Script" id=4]
+[ext_resource path="res://characters/sfx/breath.wav" type="AudioStream" id=5]
+[ext_resource path="res://characters/sfx/monster_06.wav" type="AudioStream" id=6]
+[ext_resource path="res://characters/sfx/monster_03.wav" type="AudioStream" id=7]
+[ext_resource path="res://characters/sfx/monster_07.wav" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.723841
@@ -686,3 +690,23 @@ draw_pass_1 = SubResource( 10 )
 
 [node name="HurtAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hurt = SubResource( 11 )
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 8 )
+unit_size = 13.0
+bus = "sfx"
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
+unit_size = 13.0
+bus = "sfx"
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_size = 13.0
+bus = "sfx"
+
+[node name="SpottedSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 6 )
+unit_size = 13.0
+bus = "sfx"
