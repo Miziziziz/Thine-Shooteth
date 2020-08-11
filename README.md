@@ -1,5 +1,5 @@
 # Thine-Shooteth
-From this video: https://www.youtube.com/watch?v=oz5JQ_vJ6Dk&feature=youtu.be
+From this video: https://youtu.be/oz5JQ_vJ6Dk?t=1182
 
 LICENSE INFO
 all code is by me and licensed under MIT
