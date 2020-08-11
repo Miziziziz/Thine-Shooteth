@@ -1,4 +1,6 @@
 # Thine-Shooteth
+From this video: https://www.youtube.com/watch?v=oz5JQ_vJ6Dk&feature=youtu.be
+
 LICENSE INFO
 all code is by me and licensed under MIT
 all art assets are public domain: https://opengameart.org/content/dungeon-crawl-32x32-tiles
